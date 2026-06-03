@@ -1,0 +1,60 @@
+services:
+  backend:
+    build: ./backend
+    container_name: aies-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./backend/storage:/app/storage
+    depends_on:
+      - postgres
+    networks:
+      - aies
+
+  frontend:
+    build: ./frontend
+    container_name: aies-frontend
+    ports:
+      - "5180:5180"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    networks:
+      - aies
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: aies-postgres
+    environment:
+      POSTGRES_USER: aies
+      POSTGRES_PASSWORD: aies
+      POSTGRES_DB: aies
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - aies
+
+  # Optional: Ollama for local LLM/embeddings
+  ollama:
+    image: ollama/ollama:latest
+    container_name: aies-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - aies
+    profiles: ["ollama"]
+
+volumes:
+  pgdata:
+  ollama_data:
+
+networks:
+  aies:
+    driver: bridge
