@@ -116,8 +116,9 @@ def train(payload: DLTrainRequest, db: Session = Depends(get_db)):
             model_id="", task=spec.get("task", ""), api=spec.get("api", "sequential"),
             architecture=spec.get("architecture"), tf_available=False, trained=False,
             message=("TensorFlow isn't installed, so the network was designed, shape-validated "
-                     "and exported as code — but not trained. Run `pip install tensorflow` in the "
-                     "backend environment to enable one-click in-studio training."),
+                     "and exported as code — but not trained. Install the optional deep-learning "
+                     "dependencies with `pip install -r requirements-dl.txt` (Python 3.11–3.12), "
+                     'or set `INSTALL_DL: "true"` in docker-compose.yml.'),
             validation=ValidationReport(**report), code=code,
         )
 
