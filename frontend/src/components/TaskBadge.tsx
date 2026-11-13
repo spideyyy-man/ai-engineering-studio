@@ -15,49 +15,49 @@ const META: Record<TaskType, { label: string; icon: typeof BrainCircuit; band: s
   classification: {
     label: "Classification",
     icon: BrainCircuit,
-    band: "from-emerald-500/40 to-emerald-700/10",
+    band: "border-l-emerald-400",
     chip: "border-emerald-700/40 bg-emerald-900/30 text-emerald-100",
   },
   regression: {
     label: "Regression",
     icon: LineChart,
-    band: "from-sky-500/40 to-sky-700/10",
+    band: "border-l-sky-400",
     chip: "border-sky-700/40 bg-sky-900/30 text-sky-100",
   },
   time_series_regression: {
     label: "Time-series forecasting",
     icon: Clock4,
-    band: "from-violet-500/40 to-violet-700/10",
+    band: "border-l-violet-400",
     chip: "border-violet-700/40 bg-violet-900/30 text-violet-100",
   },
   time_series: {
     label: "Time series (unsup.)",
     icon: Clock4,
-    band: "from-violet-500/40 to-violet-700/10",
+    band: "border-l-violet-400",
     chip: "border-violet-700/40 bg-violet-900/30 text-violet-100",
   },
   rag_corpus: {
     label: "RAG corpus",
     icon: BookOpen,
-    band: "from-amber-500/40 to-amber-700/10",
+    band: "border-l-amber-400",
     chip: "border-amber-700/40 bg-amber-900/30 text-amber-100",
   },
   nlp: {
     label: "NLP",
     icon: MessageSquare,
-    band: "from-rose-500/40 to-rose-700/10",
+    band: "border-l-rose-400",
     chip: "border-rose-700/40 bg-rose-900/30 text-rose-100",
   },
   clustering: {
     label: "Clustering",
     icon: Layers,
-    band: "from-cyan-500/40 to-cyan-700/10",
+    band: "border-l-cyan-400",
     chip: "border-cyan-700/40 bg-cyan-900/30 text-cyan-100",
   },
   unknown: {
     label: "Unknown",
     icon: HelpCircle,
-    band: "from-slate-500/30 to-slate-700/10",
+    band: "border-l-slate-400",
     chip: "border-bg-border bg-bg-panel text-slate-200",
   },
 };
@@ -90,7 +90,7 @@ export default function TaskBadge({ task, loading, compact }: Props) {
   return (
     <div
       className={clsx(
-        "relative overflow-hidden rounded-xl border border-bg-border bg-gradient-to-r p-4 shadow-inner",
+        "relative overflow-hidden rounded-panel border border-l-4 border-bg-border bg-bg-panel p-4",
         m.band
       )}
     >
@@ -100,7 +100,7 @@ export default function TaskBadge({ task, loading, compact }: Props) {
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs uppercase tracking-wide text-slate-300">Detected task</span>
+            <span className="text-xs text-slate-300">Detected task</span>
             <span className={clsx("rounded-full border px-2 py-0.5 text-xs font-medium", m.chip)}>
               {m.label}
             </span>

@@ -262,7 +262,7 @@ function ConfigureSection(p: ConfigureProps) {
 
               {p.task !== "unknown" && (
                 <div className="mt-3 rounded-lg border border-bg-border bg-bg-panel/60 p-3 text-xs text-slate-300">
-                  <span className="font-mono uppercase text-studio-ml">{p.task}</span>
+                  <span className="font-mono text-studio-ml">{p.task}</span>
                   <p className="mt-1 text-slate-400">{p.taskRationale}</p>
                 </div>
               )}
@@ -475,7 +475,7 @@ function ConfigureSection(p: ConfigureProps) {
 
         <div className="flex flex-wrap items-center gap-3">
           <button
-            className="btn-primary bg-studio-ml hover:bg-emerald-500"
+            className="btn-primary bg-studio-ml"
             disabled={!p.currentDatasetId || !p.algoKey || p.training}
             onClick={p.onTrain}
           >
@@ -519,7 +519,7 @@ function ResultsSection() {
         action={
           <div className="flex gap-2">
             <a
-              className="btn-primary"
+              className="btn-primary bg-studio-ml"
               href={pickleUrl}
               target="_blank"
               rel="noreferrer"
@@ -584,7 +584,7 @@ function ResultsSection() {
               </div>
               {result.hpt_best_params && Object.keys(result.hpt_best_params).length > 0 && (
                 <div className="rounded-lg border border-emerald-700/40 bg-emerald-900/15 p-3">
-                  <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-emerald-200">
+                  <div className="mb-1 text-xs font-semibold text-emerald-200">
                     ★ Best params
                   </div>
                   <div className="space-y-0.5 font-mono text-xs text-slate-100">
@@ -604,7 +604,7 @@ function ResultsSection() {
             {result.hpt_cv_results && result.hpt_cv_results.length > 0 && (
               <div className="overflow-x-auto rounded-lg border border-bg-border bg-bg-panel/40">
                 <table className="w-full text-xs">
-                  <thead className="bg-bg-card text-[10px] uppercase tracking-wide text-slate-400">
+                  <thead className="bg-bg-card text-[10px] text-slate-400">
                     <tr>
                       <th className="px-2 py-1.5 text-left">Rank</th>
                       <th className="px-2 py-1.5 text-left">Mean ± std</th>
@@ -670,7 +670,7 @@ function ResultsSection() {
               >
                 <span
                   className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full text-[10px] font-bold ${
-                    s.applied ? "bg-emerald-600 text-white" : "bg-bg-card text-slate-500"
+                    s.applied ? "bg-emerald-400 text-on-accent" : "bg-bg-card text-slate-500"
                   }`}
                   title={s.applied ? "applied" : "skipped"}
                 >
@@ -678,7 +678,7 @@ function ResultsSection() {
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-baseline gap-2">
-                    <span className="font-mono text-xs uppercase tracking-wide text-slate-400">
+                    <span className="font-mono text-xs text-slate-400">
                       {s.kind}
                     </span>
                     <code className="font-mono text-xs text-slate-100">{s.method}</code>

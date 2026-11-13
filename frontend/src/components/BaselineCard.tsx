@@ -45,7 +45,7 @@ export default function BaselineCard({ baseline, loading, onRefresh }: Props) {
     <div className="rounded-xl border border-bg-border bg-bg-panel/60 p-4">
       <header className="mb-3 flex items-start justify-between gap-2">
         <div>
-          <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-slate-400">
+          <div className="flex items-center gap-2 text-xs text-slate-400">
             <Activity size={12} /> Baseline · {baseline.task}
           </div>
           <div className="mt-0.5 text-sm text-slate-200">

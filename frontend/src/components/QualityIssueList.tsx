@@ -63,7 +63,7 @@ export default function QualityIssueList({
               <Icon size={18} className="mt-0.5 shrink-0 text-slate-200" />
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-[10px] uppercase tracking-wide text-slate-400">
+                  <span className="font-mono text-[10px] text-slate-400">
                     {issue.code}
                   </span>
                   {issue.column && <span className="pill">{issue.column}</span>}

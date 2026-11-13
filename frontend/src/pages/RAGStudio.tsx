@@ -163,9 +163,9 @@ export default function RAGStudio() {
   }
 
   return (
-    <div>
+    <div className="mx-auto max-w-7xl px-8 py-8">
       <PageHeader title="RAG Engineering Studio" accent="text-studio-rag"
-        subtitle="Compose a pipeline stage-by-stage — chunk · embed · store · transform · retrieve · rerank · compress · generate. Pick a strategy preset or wire each stage yourself." />
+        subtitle="Build a retrieval pipeline step by step: split, embed and index your sources, then choose how questions are rewritten, retrieved, reranked and answered. Start from a strategy preset or set each step yourself." />
 
       {!projectId && <Card className="mb-4"><p className="text-sm text-amber-400">Select a project (top-left) to build an index.</p></Card>}
       {err && <Card className="mb-4"><p className="text-sm text-red-400">{err}</p></Card>}
@@ -177,7 +177,7 @@ export default function RAGStudio() {
             {cat.strategies.map((s) => (
               <button key={s.key} onClick={() => applyStrategy(s.key)} title={`${s.wiring} — ${s.when}`}
                 className={`rounded-full px-3 py-1 text-xs font-medium transition ${
-                  strategy === s.key ? "bg-studio-rag text-white" : "border border-bg-border text-slate-300 hover:bg-bg-panel"
+                  strategy === s.key ? "bg-studio-rag text-on-accent" : "border border-bg-border text-slate-300 hover:bg-bg-panel"
                 }`}>
                 {s.label}{s.recommended ? " ★" : ""}
               </button>
@@ -223,7 +223,7 @@ export default function RAGStudio() {
               </div>
             </Stage>
 
-            <button className="btn w-full bg-studio-rag text-white hover:opacity-90" disabled={building || !projectId} onClick={build}>
+            <button className="btn-primary w-full bg-studio-rag" disabled={building || !projectId} onClick={build}>
               {building ? <Loader2 size={16} className="animate-spin" /> : <Database size={16} />}
               {building ? "Building…" : "Build index"}
             </button>
@@ -300,7 +300,7 @@ export default function RAGStudio() {
               <label className="label">Question</label>
               <input className="input" value={question} onChange={(e) => setQuestion(e.target.value)} onKeyDown={(e) => e.key === "Enter" && runQuery()} />
             </div>
-            <button className="btn w-full bg-studio-rag text-white hover:opacity-90" disabled={querying || !activeIdx} onClick={runQuery}>
+            <button className="btn-primary w-full bg-studio-rag" disabled={querying || !activeIdx} onClick={runQuery}>
               {querying ? <Loader2 size={16} className="animate-spin" /> : <Play size={16} />} Run query
             </button>
           </div>

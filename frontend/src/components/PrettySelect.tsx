@@ -54,7 +54,7 @@ export default function PrettySelect({
   return (
     <div className={clsx("inline-flex items-center gap-2", block && "w-full", className)}>
       {label && (
-        <span className="shrink-0 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+        <span className="shrink-0 text-[11px] font-semibold text-slate-400">
           {label}
         </span>
       )}

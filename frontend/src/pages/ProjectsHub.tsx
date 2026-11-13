@@ -48,7 +48,7 @@ export default function ProjectsHub() {
             onChange={(e) => setDesc(e.target.value)}
           />
           <button
-            className="btn-primary"
+            className="btn-primary bg-slate-100 hover:bg-white"
             onClick={onCreate}
             disabled={!name.trim() || loading}
           >

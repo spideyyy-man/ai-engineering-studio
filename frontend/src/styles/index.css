@@ -10,7 +10,23 @@
   }
   body {
     font-family: theme("fontFamily.sans");
+    font-feature-settings: "tnum" 1; /* tabular numbers: metrics line up */
   }
+  ::selection {
+    background: theme("colors.studio.data / 35%");
+  }
+
+  /* Keyboard focus is always visible. */
+  :focus-visible {
+    outline: 2px solid theme("colors.studio.data");
+    outline-offset: 2px;
+  }
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline-offset: 0;
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -21,39 +37,53 @@
   ::-webkit-scrollbar-thumb {
     background: theme("colors.bg.border");
     border-radius: 8px;
+    border: 2px solid theme("colors.bg.DEFAULT");
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
 @layer components {
+  /* Flat bordered panels: hierarchy comes from spacing and type, not shadows. */
   .card {
-    @apply rounded-xl border border-bg-border bg-bg-card p-5 shadow-sm;
+    @apply rounded-panel border border-bg-border bg-bg-card p-5;
   }
   .pill {
     @apply inline-flex items-center rounded-full border border-bg-border bg-bg-panel px-2.5 py-0.5 text-xs font-medium text-slate-300;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-60;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
   }
+  /* Accent fills are light, so their text is dark graphite. */
   .btn-primary {
-    @apply btn bg-studio-data text-white hover:bg-blue-500;
+    @apply btn bg-studio-data font-semibold text-on-accent hover:brightness-110;
   }
   .btn-ghost {
-    @apply btn border border-bg-border text-slate-200 hover:bg-bg-panel;
+    @apply btn border border-bg-border text-slate-200 hover:border-slate-600 hover:bg-bg-panel;
   }
   .btn-danger {
-    @apply btn bg-red-600 text-white hover:bg-red-500;
+    @apply btn bg-red-500 font-semibold text-on-accent hover:bg-red-400;
   }
   .input {
-    @apply w-full rounded-lg border border-bg-border bg-bg-panel px-3 py-2 text-sm text-slate-100 placeholder-slate-500 outline-none focus:border-studio-data;
+    @apply w-full rounded-lg border border-bg-border bg-bg-panel px-3 py-2 text-sm text-slate-100 placeholder-slate-500 outline-none transition-colors hover:border-slate-600 focus:border-studio-data;
   }
   .label {
-    @apply mb-1 block text-xs font-medium uppercase tracking-wide text-slate-400;
+    @apply mb-1.5 block text-xs font-medium text-slate-400;
   }
   .section-title {
-    @apply text-lg font-semibold text-slate-100;
+    @apply text-base font-semibold text-slate-100;
   }
   .section-sub {
-    @apply text-sm text-slate-400;
+    @apply text-sm leading-relaxed text-slate-400;
   }
   .kbd {
     @apply rounded border border-bg-border bg-bg-panel px-1.5 py-0.5 font-mono text-xs text-slate-300;

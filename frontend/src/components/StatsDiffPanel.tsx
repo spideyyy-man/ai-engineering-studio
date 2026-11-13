@@ -60,7 +60,7 @@ export default function StatsDiffPanel({ diff, title = "Column stats: before →
               ) : (
                 <table className="w-full">
                   <thead>
-                    <tr className="text-left text-[10px] uppercase tracking-wide text-slate-500">
+                    <tr className="text-left text-[10px] text-slate-500">
                       <th className="py-0.5">stat</th>
                       <th className="py-0.5">before</th>
                       <th className="py-0.5"></th>

@@ -49,7 +49,7 @@ export default function LayerEditor() {
     <div className="space-y-3">
       {/* Input chip */}
       <div className="flex items-center gap-2 rounded-lg border border-dashed border-bg-border bg-bg-panel/40 px-3 py-2 text-xs">
-        <span className="font-mono uppercase tracking-wide text-slate-500">input</span>
+        <span className="font-mono text-slate-500">input</span>
         <span className="font-mono text-studio-dl">({spec.input_shape.join(", ")})</span>
         <span className="text-slate-500">— fed into layer 1</span>
       </div>
@@ -158,7 +158,7 @@ export default function LayerEditor() {
           <div className="space-y-3 border-t border-bg-border px-3 py-3">
             {CATEGORY_ORDER.filter((c) => palette[c]?.length).map((cat) => (
               <div key={cat}>
-                <div className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-slate-500">
+                <div className="mb-1 text-[10px] font-semibold text-slate-500">
                   {CATEGORY_LABEL[cat] ?? cat}
                 </div>
                 <div className="flex flex-wrap gap-1.5">

@@ -325,7 +325,7 @@ export default function DataStudio() {
           summary && (
             <div className="flex flex-wrap items-center gap-2">
               <button
-                className="flex items-center gap-2 rounded-lg bg-emerald-600 px-3.5 py-2 text-sm font-semibold text-white shadow-lg shadow-emerald-900/30 hover:bg-emerald-500"
+                className="flex items-center gap-2 rounded-lg bg-emerald-400 px-3.5 py-2 text-sm font-semibold text-on-accent hover:bg-emerald-300"
                 onClick={() => setCleanOpen(true)}
                 title="One-click: iteratively apply the recommended fix for every problem until none remain. Produces a brand-new ML-ready dataset."
               >
@@ -495,7 +495,7 @@ export default function DataStudio() {
                       action={
                         !tsne && (
                           <button
-                            className="btn-primary bg-studio-dl hover:bg-purple-500"
+                            className="btn-primary bg-studio-dl"
                             onClick={loadTSNE}
                             disabled={tsneLoading}
                           >
@@ -557,7 +557,7 @@ export default function DataStudio() {
                                   {autoFixing ? "Running…" : `Auto-fix all (${recommendableCount})`}
                                 </button>
                                 <button
-                                  className="flex items-center gap-2 rounded-lg bg-emerald-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-50"
+                                  className="flex items-center gap-2 rounded-lg bg-emerald-400 px-3 py-1.5 text-sm font-semibold text-on-accent hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-50"
                                   onClick={() => setCleanOpen(true)}
                                   disabled={autoFixing || recommendableCount === 0}
                                   title="Iterative loop — keeps applying fixes until no fixable issues remain. Always creates a new dataset."
@@ -862,7 +862,7 @@ function VisualsView({
                 }`}
               >
                 {on && (
-                  <span className="grid h-3 w-3 place-items-center rounded-full bg-studio-dl text-white">
+                  <span className="grid h-3 w-3 place-items-center rounded-full bg-studio-dl text-on-accent">
                     <Check size={9} />
                   </span>
                 )}

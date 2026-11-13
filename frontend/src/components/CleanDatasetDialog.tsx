@@ -66,7 +66,7 @@ export default function CleanDatasetDialog({
             Cancel
           </button>
           <button
-            className="btn-primary bg-emerald-600 hover:bg-emerald-500"
+            className="btn-primary bg-emerald-400 hover:bg-emerald-300"
             onClick={run}
             disabled={running}
           >

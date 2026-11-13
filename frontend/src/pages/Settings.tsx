@@ -99,7 +99,7 @@ export default function SettingsPage() {
 function Row({ k, v, ok }: { k: string; v: string; ok?: boolean }) {
   return (
     <div className="rounded-lg border border-bg-border bg-bg-panel px-3 py-2">
-      <div className="text-xs uppercase tracking-wide text-slate-500">{k}</div>
+      <div className="text-xs text-slate-500">{k}</div>
       <div
         className={`mt-0.5 font-mono text-sm ${
           ok === false ? "text-amber-300" : "text-slate-100"

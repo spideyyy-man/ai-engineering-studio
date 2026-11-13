@@ -44,7 +44,7 @@ export default function RecommendationsList({ recommendations, selected, onToggl
               <span
                 className={clsx(
                   "mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded border",
-                  isOn ? "border-studio-data bg-studio-data text-white" : "border-bg-border"
+                  isOn ? "border-studio-data bg-studio-data text-on-accent" : "border-bg-border"
                 )}
               >
                 {isOn && <Check size={12} />}
@@ -53,7 +53,7 @@ export default function RecommendationsList({ recommendations, selected, onToggl
                 <div className="flex flex-wrap items-center gap-2">
                   <span
                     className={clsx(
-                      "font-mono text-xs uppercase tracking-wide",
+                      "font-mono text-xs",
                       STEP_COLOR[rec.step] ?? "text-slate-300"
                     )}
                   >

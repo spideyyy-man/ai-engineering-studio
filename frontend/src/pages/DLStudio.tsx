@@ -451,7 +451,7 @@ export default function DLStudio() {
 
                   <div className="flex flex-wrap items-center gap-3">
                     <button
-                      className="btn-primary bg-studio-dl hover:opacity-90"
+                      className="btn-primary bg-studio-dl"
                       disabled={
                         training ||
                         !validation?.ok ||

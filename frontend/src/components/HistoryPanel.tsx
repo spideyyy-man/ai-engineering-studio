@@ -24,7 +24,7 @@ export default function HistoryPanel({ entries, onUndo, busy }: Props) {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <div className="text-xs uppercase tracking-wide text-slate-400">
+        <div className="text-xs text-slate-400">
           {entries.length} step{entries.length === 1 ? "" : "s"}
         </div>
         <button

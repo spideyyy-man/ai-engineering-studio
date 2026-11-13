@@ -185,7 +185,7 @@ export default function FixDialog({
               </div>
             </div>
           )}
-          <div className="mb-2 text-xs uppercase tracking-wide text-slate-500">
+          <div className="mb-2 text-xs text-slate-500">
             Pick a method
           </div>
           <ul className="grid gap-2 sm:grid-cols-2">
@@ -214,7 +214,7 @@ export default function FixDialog({
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-medium text-slate-100">{op.label}</span>
                       {active && (
-                        <span className="grid h-4 w-4 place-items-center rounded-full bg-studio-data text-white">
+                        <span className="grid h-4 w-4 place-items-center rounded-full bg-studio-data text-on-accent">
                           <Check size={11} />
                         </span>
                       )}
@@ -228,7 +228,7 @@ export default function FixDialog({
 
           {selected && (
             <div className="mt-5 space-y-3 rounded-lg border border-bg-border bg-bg-panel/60 p-4">
-              <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-slate-500">
+              <div className="flex items-center gap-2 text-xs text-slate-500">
                 <Sparkles size={12} /> Configure
               </div>
 
@@ -237,7 +237,7 @@ export default function FixDialog({
                   <label className="label flex items-center justify-between">
                     <span>
                       {pk}{" "}
-                      <span className="font-mono text-[10px] uppercase text-slate-500">
+                      <span className="font-mono text-[10px] text-slate-500">
                         {ps.type}
                       </span>
                     </span>

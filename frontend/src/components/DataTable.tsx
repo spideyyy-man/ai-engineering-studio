@@ -11,7 +11,7 @@ export default function DataTable({ columns, rows, maxHeight = 320 }: Props) {
       style={{ maxHeight }}
     >
       <table className="min-w-full text-sm">
-        <thead className="sticky top-0 bg-bg-card text-xs uppercase tracking-wide text-slate-400">
+        <thead className="sticky top-0 bg-bg-card text-xs text-slate-400">
           <tr>
             {columns.map((c) => (
               <th key={c.key} className="whitespace-nowrap px-3 py-2 text-left font-medium">

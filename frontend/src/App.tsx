@@ -31,19 +31,79 @@ interface NavItem {
   to: string;
   label: string;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement> & { size?: number | string }>;
+  /** Text colour class for the active icon. */
   accent: string;
+  /** Background colour class for the workflow tick. */
+  tick?: string;
+  planned?: boolean;
 }
 
-const NAV: NavItem[] = [
-  { to: "/projects", label: "Projects", icon: LayoutGrid, accent: "text-studio-hub" },
-  { to: "/data", label: "Data & EDA", icon: Database, accent: "text-studio-data" },
-  { to: "/ml", label: "ML Studio", icon: BrainCircuit, accent: "text-studio-ml" },
-  { to: "/dl", label: "DL Studio", icon: Network, accent: "text-studio-dl" },
-  { to: "/rag", label: "RAG Studio", icon: BookOpen, accent: "text-studio-rag" },
-  { to: "/agents", label: "AI Agents", icon: Bot, accent: "text-studio-agent" },
-  { to: "/deploy", label: "Deployment", icon: Rocket, accent: "text-studio-deploy" },
-  { to: "/settings", label: "Settings", icon: SettingsIcon, accent: "text-studio-settings" },
+// The workflow studios, in pipeline order. Their colours walk the viridis
+// ramp, so the sidebar reads like a colourbar from data to deployment.
+const WORKFLOW: NavItem[] = [
+  { to: "/data", label: "Data & EDA", icon: Database, accent: "text-studio-data", tick: "bg-studio-data" },
+  { to: "/ml", label: "ML Studio", icon: BrainCircuit, accent: "text-studio-ml", tick: "bg-studio-ml" },
+  { to: "/dl", label: "DL Studio", icon: Network, accent: "text-studio-dl", tick: "bg-studio-dl" },
+  { to: "/rag", label: "RAG Studio", icon: BookOpen, accent: "text-studio-rag", tick: "bg-studio-rag" },
+  { to: "/agents", label: "AI Agents", icon: Bot, accent: "text-studio-agent", tick: "bg-studio-agent", planned: true },
+  { to: "/deploy", label: "Deployment", icon: Rocket, accent: "text-studio-deploy", tick: "bg-studio-deploy", planned: true },
 ];
+
+const PROJECTS: NavItem = { to: "/projects", label: "Projects", icon: LayoutGrid, accent: "text-slate-100" };
+const SETTINGS: NavItem = { to: "/settings", label: "Settings", icon: SettingsIcon, accent: "text-slate-100" };
+
+/** The brand mark: a tiny viridis colourbar, one segment per workflow studio. */
+function ColourbarMark() {
+  return (
+    <span aria-hidden className="flex h-8 w-2 shrink-0 flex-col overflow-hidden rounded-sm">
+      {WORKFLOW.map((s) => (
+        <span key={s.to} className={clsx("flex-1", s.tick)} />
+      ))}
+    </span>
+  );
+}
+
+function NavRow({ item, expanded }: { item: NavItem; expanded: boolean }) {
+  return (
+    <NavLink
+      to={item.to}
+      title={item.planned ? `${item.label} (planned)` : item.label}
+      className={({ isActive }) =>
+        clsx(
+          "group relative flex items-center gap-3 rounded-lg py-2 pl-3 pr-2.5 text-sm transition-colors",
+          isActive
+            ? "bg-bg-card font-medium text-slate-50"
+            : "text-slate-400 hover:bg-bg-card/60 hover:text-slate-100"
+        )
+      }
+    >
+      {({ isActive }) => (
+        <>
+          {item.tick && (
+            <span
+              aria-hidden
+              className={clsx(
+                "absolute left-0 top-1/2 w-[3px] -translate-y-1/2 rounded-full transition-all",
+                item.tick,
+                isActive ? "h-5 opacity-100" : "h-2.5 opacity-50 group-hover:opacity-80"
+              )}
+            />
+          )}
+          <item.icon size={17} className={clsx("shrink-0", isActive ? item.accent : "text-slate-500 group-hover:text-slate-300")} />
+          <span
+            className={clsx(
+              "flex flex-1 items-center justify-between gap-2 whitespace-nowrap transition-opacity",
+              expanded ? "opacity-100" : "w-0 opacity-0"
+            )}
+          >
+            {item.label}
+            {item.planned && <span className="text-[11px] font-normal text-slate-500">Planned</span>}
+          </span>
+        </>
+      )}
+    </NavLink>
+  );
+}
 
 export default function App() {
   const fetchAll = useProjectStore((s) => s.fetchAll);
@@ -72,35 +132,35 @@ export default function App() {
         onMouseEnter={() => !pinned && setHovering(true)}
         onMouseLeave={() => !pinned && setHovering(false)}
         className={clsx(
-          "relative z-20 flex flex-col border-r border-bg-border bg-bg-panel shadow-xl transition-[width] duration-200 ease-out",
+          "relative z-20 flex flex-col border-r border-bg-border bg-bg-panel transition-[width] duration-200 ease-out",
           expanded ? "w-60" : "w-[64px]"
         )}
       >
-        {/* Logo + collapse pin */}
-        <div className="flex items-center justify-between gap-2 border-b border-bg-border px-3 py-3">
+        {/* Brand + pin */}
+        <div className="flex items-center justify-between gap-2 px-4 pb-3 pt-4">
           <button
-            className="flex items-center gap-2 overflow-hidden text-left"
+            className="flex items-center gap-3 overflow-hidden rounded-md text-left"
             onClick={() => navigate("/projects")}
+            title="AI Engineering Studio"
           >
-            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-studio-data to-studio-dl text-sm font-bold">
-              AI
-            </span>
-            <div
+            <ColourbarMark />
+            <span
               className={clsx(
-                "leading-tight transition-all",
+                "leading-tight transition-opacity",
                 expanded ? "opacity-100" : "w-0 opacity-0"
               )}
             >
-              <div className="whitespace-nowrap text-sm font-semibold">AI Engineering</div>
-              <div className="whitespace-nowrap text-xs text-slate-400">Studio · v0.1</div>
-            </div>
+              <span className="block whitespace-nowrap text-sm font-semibold text-slate-50">AI Engineering</span>
+              <span className="block whitespace-nowrap text-sm text-slate-400">Studio</span>
+            </span>
           </button>
           <button
             className={clsx(
-              "rounded-md p-1.5 text-slate-400 hover:bg-bg-card hover:text-slate-100",
-              !expanded && "absolute right-2 top-3"
+              "rounded-md p-1.5 text-slate-500 transition-colors hover:bg-bg-card hover:text-slate-100",
+              !expanded && "absolute right-2 top-4"
             )}
-            title={pinned ? "Collapse sidebar" : "Pin sidebar open"}
+            title={pinned ? "Collapse sidebar" : "Keep sidebar open"}
+            aria-label={pinned ? "Collapse sidebar" : "Keep sidebar open"}
             onClick={() => setPinned((p) => !p)}
           >
             {pinned ? <PinOff size={15} /> : <Pin size={15} />}
@@ -110,56 +170,32 @@ export default function App() {
         {/* Project switcher (expanded only) */}
         <div
           className={clsx(
-            "overflow-hidden border-b border-bg-border transition-all",
-            expanded ? "max-h-40 px-4 py-3 opacity-100" : "max-h-0 opacity-0"
+            "overflow-hidden transition-all",
+            expanded ? "max-h-40 px-4 pb-3 opacity-100" : "max-h-0 opacity-0"
           )}
         >
           <ProjectSwitcher />
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 space-y-0.5 overflow-x-hidden overflow-y-auto px-2 py-2">
-          {NAV.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              title={item.label}
-              className={({ isActive }) =>
-                clsx(
-                  "group flex items-center gap-3 rounded-lg px-2.5 py-2 text-sm font-medium transition",
-                  isActive
-                    ? "bg-bg-card text-white"
-                    : "text-slate-400 hover:bg-bg-card hover:text-slate-100"
-                )
-              }
-            >
-              <item.icon size={18} className={clsx("shrink-0", item.accent)} />
-              <span
-                className={clsx(
-                  "whitespace-nowrap transition-all",
-                  expanded ? "opacity-100" : "w-0 opacity-0"
-                )}
-              >
-                {item.label}
-              </span>
-            </NavLink>
-          ))}
+        <nav className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto border-t border-bg-border px-2 py-3">
+          <NavRow item={PROJECTS} expanded={expanded} />
+          <div className="mx-3 my-2 border-t border-bg-border" />
+          <div className="space-y-0.5">
+            {WORKFLOW.map((item) => (
+              <NavRow key={item.to} item={item} expanded={expanded} />
+            ))}
+          </div>
+          <div className="mt-auto pt-3">
+            <NavRow item={SETTINGS} expanded={expanded} />
+          </div>
         </nav>
 
-        <div
-          className={clsx(
-            "overflow-hidden border-t border-bg-border text-xs text-slate-500 transition-all",
-            expanded ? "px-5 py-3 opacity-100" : "max-h-0 opacity-0"
-          )}
-        >
-          {pinned ? "Pinned · local mode" : "Hover to expand · click pin to lock"}
-        </div>
-
-        {/* Floating menu icon when collapsed — also serves as drag-target hint */}
+        {/* Collapsed hint */}
         {!pinned && !hovering && (
           <Menu
             size={14}
-            className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 text-slate-500"
+            className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 text-slate-600"
           />
         )}
       </aside>
