@@ -22,16 +22,16 @@ services:
   frontend:
     build: ./frontend
     container_name: aies-frontend
+    # nginx serves the app and forwards /api to the backend (see frontend/nginx.conf).
     ports:
       - "127.0.0.1:5180:5180"
-    environment:
-      - VITE_API_URL=http://localhost:8000
     depends_on:
       - backend
     networks:
       - aies
 
-  # Optional: Ollama for local LLM/embeddings
+  # Optional: Ollama for local LLM/embeddings. Start with `--profile ollama`
+  # and set OLLAMA_BASE_URL=http://ollama:11434 in .env so the backend finds it.
   ollama:
     image: ollama/ollama:latest
     container_name: aies-ollama

@@ -131,6 +131,11 @@ def _safe_float(x) -> float | None:
         return None
 
 
+def _jsonable_label(x: Any) -> Any:
+    """Turn a numpy scalar class label into a plain Python value for JSON."""
+    return x.item() if hasattr(x, "item") else x
+
+
 def _fig_to_json(fig: go.Figure) -> dict[str, Any]:
     return json.loads(fig.to_json())
 
@@ -290,15 +295,26 @@ def train_model(
         if task == "classification":
             n_classes = int(pd.Series(y_te).nunique())
             avg = "binary" if n_classes == 2 else "weighted"
+            # sklearn's binary metrics assume the positive class is 1, which
+            # fails for text labels like "yes"/"no". Use the model's second
+            # class (the same one ROC AUC uses below) as the positive class.
+            pr_kwargs: dict[str, Any] = {"average": avg, "zero_division": 0}
+            if avg == "binary":
+                model_classes = getattr(pipe, "classes_", None)
+                if model_classes is None or len(model_classes) != 2:
+                    model_classes = sorted(pd.Series(y_te).unique().tolist(), key=str)
+                pr_kwargs["pos_label"] = model_classes[1]
             metrics = {
                 "accuracy": _safe_float(accuracy_score(y_te, preds)),
-                "precision": _safe_float(precision_score(y_te, preds, average=avg, zero_division=0)),
-                "recall": _safe_float(recall_score(y_te, preds, average=avg, zero_division=0)),
-                "f1": _safe_float(f1_score(y_te, preds, average=avg, zero_division=0)),
+                "precision": _safe_float(precision_score(y_te, preds, **pr_kwargs)),
+                "recall": _safe_float(recall_score(y_te, preds, **pr_kwargs)),
+                "f1": _safe_float(f1_score(y_te, preds, **pr_kwargs)),
                 "f1_macro": _safe_float(f1_score(y_te, preds, average="macro", zero_division=0)),
                 "average": avg,
                 "n_classes": n_classes,
             }
+            if avg == "binary":
+                metrics["positive_label"] = _jsonable_label(pr_kwargs["pos_label"])
             try:
                 proba = pipe.predict_proba(X_te)
                 if n_classes == 2:

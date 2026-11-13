@@ -1,14 +1,13 @@
+# Build the static app, then serve it with nginx. nginx also forwards /api/*
+# to the backend container, so the browser only ever talks to one origin.
 FROM node:22-alpine AS build
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+COPY package.json package-lock.json ./
+RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM node:22-alpine
-WORKDIR /app
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/package.json ./
-RUN npm install --omit=dev vite
+FROM nginx:1.28-alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 5180
-CMD ["npx", "vite", "preview", "--host", "0.0.0.0", "--port", "5180"]

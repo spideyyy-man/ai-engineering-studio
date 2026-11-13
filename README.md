@@ -1,5 +1,8 @@
 # AI Engineering Studio
 
+[![CI](https://github.com/spideyyy-man/ai-engineering-studio/actions/workflows/ci.yml/badge.svg)](https://github.com/spideyyy-man/ai-engineering-studio/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 A local, developer-friendly web app for prototyping **machine learning**, **deep learning** and **RAG** systems through guided screens, with **readable, exportable Python code at every step**.
 
 Most AutoML tools hide what they do. This one shows you the data issues it found, *why* it recommends a preprocessing step, the model and metrics it produced, and the code to reproduce all of it, so you learn while you build and you own the result.
@@ -7,6 +10,27 @@ Most AutoML tools hide what they do. This one shows you the data issues it found
 **Who it's for:** ML and AI engineers who want a quick baseline or prototype, and students or small teams learning how real pipelines fit together.
 
 > **Status: early alpha.** Data, ML, DL and RAG work end to end. Agents and Deployment are placeholders. Expect rough edges, and please report them.
+
+![Data & EDA studio: quality issues with recommended fixes](docs/screenshots/data-studio.png)
+
+<table>
+  <tr>
+    <td><img src="docs/screenshots/ml-studio-results.png" alt="ML Studio: confusion matrix and feature importance after training"></td>
+    <td><img src="docs/screenshots/rag-studio-results.png" alt="RAG Studio: hybrid retrieval results with scores"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>ML Studio: diagnostics after training on the sample churn data</sub></td>
+    <td align="center"><sub>RAG Studio: hybrid retrieval over the sample glossary</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/ml-studio-configure.png" alt="ML Studio: dataset, target and algorithm selection"></td>
+    <td><img src="docs/screenshots/dl-studio.png" alt="DL Studio: layer-by-layer network builder with live shape checks"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>ML Studio: pick a target and one of 30+ algorithms</sub></td>
+    <td align="center"><sub>DL Studio: edit layers, check shapes, export Keras code</sub></td>
+  </tr>
+</table>
 
 ---
 
@@ -80,7 +104,14 @@ npm run dev
 
 The UI runs at <http://localhost:5180>.
 
-### 4. (Optional) Ollama for RAG answers
+### 4. Try it with the sample data
+
+The [`samples/`](samples) folder has data to play with straight away:
+
+- **`customer_churn.csv`**: 600 synthetic customers with a yes/no `churned` target and some deliberate problems (missing values, duplicates, an outlier, an ID column). Upload it in **Data & EDA**, set the target to `churned`, fix the issues, then train a model in **ML Studio**.
+- **`ml_glossary.md`**: a short ML glossary. Paste it into **RAG Studio** as a text source and ask questions like "Why can duplicate rows make my scores look better?"
+
+### 5. (Optional) Ollama for RAG answers
 
 ```bash
 ollama serve
@@ -94,9 +125,13 @@ ollama pull nomic-embed-text
 docker compose up --build
 ```
 
-Add `--profile ollama` to also start an Ollama container. To include TensorFlow in the backend image, set `INSTALL_DL: "true"` under `backend.build.args` in `docker-compose.yml`.
+Then open <http://localhost:5180>. The frontend container is nginx serving the built app and forwarding `/api` to the backend, so there's only one address to use.
 
-> The Docker setup isn't covered by CI yet. If something doesn't work, please open an issue.
+- Add `--profile ollama` to also start an Ollama container, and set `OLLAMA_BASE_URL=http://ollama:11434` in `.env` so the backend can reach it.
+- To include TensorFlow in the backend image, set `INSTALL_DL: "true"` under `backend.build.args` in `docker-compose.yml`.
+- Your data (and the SQLite database) is kept in `backend/storage/` on your machine.
+
+CI builds and starts the Docker setup on every push and checks the API through nginx.
 
 ---
 
@@ -115,7 +150,7 @@ npm run lint
 npm run build
 ```
 
-GitHub Actions runs the same checks on every push and pull request (`.github/workflows/ci.yml`). The tests use a throwaway storage folder and never call a real LLM.
+GitHub Actions runs the same checks on every push and pull request, plus a Docker build and smoke test (`.github/workflows/ci.yml`). The tests use a throwaway storage folder and never call a real LLM.
 
 ---
 
@@ -128,6 +163,8 @@ This is a **local, single-user tool**. It has **no login**, so:
 - The RAG URL loader refuses localhost and private-network addresses unless you set `RAG_ALLOW_PRIVATE_URLS=true`.
 - Uploads are capped by `MAX_UPLOAD_MB` (default 200 MB).
 - Models are saved with pickle. Only load model files that this app created.
+
+Found a security problem? Please report it privately, as described in [SECURITY.md](SECURITY.md).
 
 ---
 
@@ -149,21 +186,22 @@ frontend/
     components/   shared UI
     api/          typed API client, one module per router
     store/        Zustand stores
-docs/             architecture, API, DB schema, roadmap
+samples/          sample dataset and RAG corpus
+docs/             architecture, API, DB schema, roadmap, screenshots
 ```
 
 ---
 
 ## Contributing
 
-Contributions are welcome. Good places to start:
+Contributions are welcome! Read [CONTRIBUTING.md](CONTRIBUTING.md) for setup and guidelines, and look for issues labelled [`good first issue`](https://github.com/spideyyy-man/ai-engineering-studio/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). Good places to start:
 
 - Wire up a real vector store (FAISS or Chroma) in `services/rag_studio/`
 - Add PDF/DOCX loading to RAG Studio
 - Build the first Deployment generator: a FastAPI `/predict` service for a trained ML model
 - Add tests for the parts that aren't covered yet (auto-fix, transforms and undo, DL training)
 
-Open an issue first for anything large, so we can agree on the approach.
+Open an issue first for anything large, so we can agree on the approach. Everyone taking part is expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ---
 

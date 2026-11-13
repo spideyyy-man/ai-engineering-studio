@@ -1,0 +1,604 @@
+customer_id,age,tenure_months,contract,payment_method,monthly_charges,total_charges,support_calls,churned
+C10000,44,14,One year,E-wallet,94.07,1361.09,1,no
+C10001,34,14,Month-to-month,Card,51.88,,1,no
+C10002,46,59,Two year,Card,48.66,2866.16,1,no
+C10003,70,21,One year,Card,81.49,1778.76,1,no
+C10004,37,19,Month-to-month,E-wallet,94.71,1759.33,2,yes
+C10005,19,63,Two year,Card,71.01,4544.51,0,no
+C10006,78,12,One year,Card,37.84,435.37,0,no
+C10007,30,30,One year,Card,999.0,1076.89,0,yes
+C10008,55,9,Month-to-month,Card,34.32,300.15,0,no
+C10009,67,28,Month-to-month,Card,25.81,691.08,1,no
+C10010,35,19,Month-to-month,Card,72.74,1313.47,2,no
+C10011,39,26,Two year,Card,98.13,2506.67,0,no
+C10012,35,37,One year,Bank transfer,69.66,2600.5,0,no
+C10013,27,52,Two year,E-wallet,20.0,1035.34,0,no
+C10014,27,3,Month-to-month,Card,65.23,191.81,4,yes
+C10015,29,4,Month-to-month,Card,65.93,276.67,3,no
+C10016,46,20,One year,Cash,122.4,2555.6,2,yes
+C10017,50,22,Month-to-month,E-wallet,33.57,710.89,4,yes
+C10018,18,37,Two year,Bank transfer,60.23,2209.59,2,no
+C10019,70,23,One year,Card,112.65,2629.52,1,yes
+C10020,59,23,One year,Bank transfer,81.25,1912.38,2,no
+C10021,22,17,Month-to-month,Card,84.08,,1,no
+C10022,70,28,Two year,Card,72.86,2090.32,0,yes
+C10023,19,63,Two year,Card,78.25,4744.47,1,no
+C10024,52,41,One year,Bank transfer,89.44,3605.37,1,no
+C10025,46,29,Month-to-month,Card,49.76,1474.27,3,yes
+C10026,49,4,Month-to-month,Bank transfer,91.95,372.42,3,no
+C10027,77,29,Month-to-month,Card,35.67,1069.31,1,yes
+C10028,75,5,Month-to-month,Card,78.21,373.33,1,yes
+C10029,35,49,One year,E-wallet,74.47,,0,no
+C10030,53,25,One year,E-wallet,54.59,1303.13,1,no
+C10031,77,49,Two year,Card,69.43,3297.33,1,no
+C10032,63,29,Month-to-month,Bank transfer,54.44,1500.5,4,yes
+C10033,73,22,Month-to-month,Card,43.21,951.02,1,no
+C10034,44,19,Month-to-month,Card,61.16,1165.33,4,yes
+C10035,35,11,Month-to-month,E-wallet,42.4,473.76,2,no
+C10036,49,1,Month-to-month,Card,78.07,77.17,2,no
+C10037,68,4,Month-to-month,Bank transfer,41.25,156.8,2,no
+C10038,75,9,Month-to-month,Bank transfer,87.8,803.94,2,no
+C10039,60,33,One year,Card,40.46,,0,no
+C10040,61,15,Month-to-month,Card,55.84,868.27,3,no
+C10041,49,24,Two year,Card,54.38,1242.82,0,no
+C10042,37,43,One year,Cash,103.13,4448.1,0,no
+C10043,44,15,Month-to-month,Bank transfer,78.26,1220.26,5,yes
+C10044,48,52,Two year,Card,64.71,3389.31,0,no
+C10045,68,66,Two year,Card,82.47,5502.03,2,no
+C10046,52,25,Month-to-month,Bank transfer,20.0,509.08,2,no
+C10047,67,14,Month-to-month,Card,68.92,928.45,2,no
+C10048,19,31,One year,Bank transfer,119.94,3783.18,1,no
+C10049,64,29,Month-to-month,E-wallet,73.31,2206.85,0,yes
+C10050,49,8,Month-to-month,Bank transfer,71.7,600.8,3,no
+C10051,79,12,Month-to-month,Card,83.7,998.68,3,yes
+C10052,47,29,One year,Card,92.39,2637.65,0,no
+C10053,47,18,One year,Card,20.06,370.23,0,no
+C10054,25,16,One year,Bank transfer,27.94,448.96,1,no
+C10055,68,44,One year,E-wallet,75.26,3231.07,0,no
+C10056,61,7,Month-to-month,Card,52.13,352.95,1,no
+C10057,71,34,One year,Bank transfer,102.8,3379.94,0,no
+C10058,23,16,Month-to-month,Bank transfer,62.12,989.86,1,no
+C10059,31,24,Month-to-month,Card,21.64,502.23,2,no
+C10060,72,40,One year,Card,38.3,1458.42,2,no
+C10061,20,27,Month-to-month,Card,20.0,515.81,5,no
+C10062,49,44,One year,Bank transfer,64.15,2943.94,1,no
+C10063,43,26,One year,Bank transfer,65.29,1625.05,2,yes
+C10064,76,43,One year,E-wallet,59.39,2444.77,1,no
+C10065,71,27,One year,E-wallet,96.97,2605.41,1,no
+C10066,73,16,One year,E-wallet,99.96,1558.59,2,yes
+C10067,35,11,Month-to-month,Cash,65.74,756.6,4,yes
+C10068,54,28,Month-to-month,E-wallet,20.0,583.02,2,no
+C10069,61,2,Month-to-month,E-wallet,85.43,169.23,2,yes
+C10070,77,11,Month-to-month,E-wallet,83.88,917.95,2,yes
+C10071,18,4,Month-to-month,E-wallet,77.73,307.04,0,yes
+C10072,78,43,Two year,E-wallet,94.54,3877.35,2,no
+C10073,40,20,Month-to-month,Cash,40.88,800.66,4,yes
+C10074,25,23,Month-to-month,Bank transfer,120.22,2660.73,1,yes
+C10075,56,21,Month-to-month,Bank transfer,46.01,927.79,1,yes
+C10076,66,20,Month-to-month,Bank transfer,88.73,1785.4,0,no
+C10077,26,46,One year,E-wallet,27.82,1228.37,3,no
+C10078,20,39,One year,Bank transfer,46.74,1750.48,1,no
+C10079,73,15,One year,E-wallet,107.91,1615.5,0,yes
+C10080,75,26,One year,E-wallet,63.48,1640.95,1,no
+C10081,27,22,Month-to-month,Cash,91.0,1929.45,3,no
+C10082,74,32,Two year,Card,75.92,2309.05,0,no
+C10083,74,24,Month-to-month,E-wallet,67.38,1567.47,1,yes
+C10084,79,12,Month-to-month,E-wallet,104.1,1216.21,1,yes
+C10085,31,2,Month-to-month,Cash,64.08,132.01,3,yes
+C10086,53,36,One year,Cash,25.48,955.39,0,no
+C10087,79,7,Month-to-month,Bank transfer,49.92,346.15,1,yes
+C10088,73,3,Month-to-month,Bank transfer,83.78,248.95,2,yes
+C10089,55,19,Month-to-month,Card,79.89,1550.16,2,no
+C10090,30,7,Month-to-month,Cash,30.82,218.48,3,yes
+C10091,23,21,One year,Card,51.89,1055.27,1,no
+C10092,34,13,Month-to-month,E-wallet,55.46,692.7,3,no
+C10093,22,1,Month-to-month,E-wallet,60.86,60.48,1,yes
+C10094,30,28,Month-to-month,Bank transfer,35.6,1003.26,3,yes
+C10095,22,44,One year,Card,54.29,2302.46,2,no
+C10096,65,8,Month-to-month,Card,51.78,405.68,0,yes
+C10097,54,20,Month-to-month,E-wallet,89.29,1751.15,0,no
+C10098,50,16,Month-to-month,Bank transfer,90.23,1409.22,2,yes
+C10099,68,68,Two year,Card,66.35,4494.1,1,no
+C10100,43,57,Two year,E-wallet,60.2,3483.92,1,no
+C10101,42,32,One year,Card,73.5,2354.21,1,no
+C10102,30,21,Month-to-month,E-wallet,49.59,1010.3,1,yes
+C10103,45,29,Two year,Card,41.33,1150.98,2,no
+C10104,28,24,One year,Card,46.49,1151.67,1,no
+C10105,54,21,One year,Card,54.13,1134.38,1,no
+C10106,79,8,Month-to-month,Bank transfer,40.91,312.95,2,no
+C10107,51,7,Month-to-month,Bank transfer,74.05,,1,yes
+C10108,36,13,Month-to-month,E-wallet,88.24,1182.0,1,yes
+C10109,60,29,Two year,Bank transfer,30.32,901.41,2,no
+C10110,68,16,Month-to-month,Card,70.63,1172.55,3,no
+C10111,47,11,Month-to-month,Card,64.5,716.74,0,no
+C10112,33,23,Month-to-month,Card,78.54,1792.49,0,yes
+C10113,62,41,One year,Cash,69.68,2835.92,2,no
+C10114,29,27,Month-to-month,Card,33.66,881.01,1,yes
+C10115,79,63,Two year,Cash,38.44,2458.24,2,no
+C10116,37,22,One year,Card,70.74,1569.52,0,no
+C10117,39,30,One year,Card,95.72,2772.49,2,no
+C10118,63,14,Month-to-month,Card,20.0,290.8,1,yes
+C10119,18,32,One year,Card,78.64,2483.38,1,no
+C10120,30,26,One year,E-wallet,99.74,2476.48,4,no
+C10121,25,32,One year,Bank transfer,66.17,2080.99,1,no
+C10122,42,16,Month-to-month,Card,83.76,1389.73,4,yes
+C10123,52,26,Month-to-month,Bank transfer,52.42,1419.75,2,no
+C10124,29,26,Month-to-month,Bank transfer,67.02,1740.85,2,yes
+C10125,39,6,Month-to-month,Cash,29.48,184.95,2,yes
+C10126,65,20,Month-to-month,Cash,20.0,415.01,1,no
+C10127,76,3,Month-to-month,Bank transfer,93.57,289.84,2,yes
+C10128,18,20,Month-to-month,E-wallet,45.38,940.25,6,yes
+C10129,56,48,One year,E-wallet,58.61,2780.05,2,no
+C10130,19,14,Month-to-month,Bank transfer,35.34,507.45,4,yes
+C10131,50,62,Two year,E-wallet,34.75,2171.16,0,no
+C10132,72,43,One year,Card,65.65,2884.97,1,no
+C10133,67,24,Month-to-month,E-wallet,51.76,1202.21,1,yes
+C10134,32,17,One year,Cash,79.45,1381.9,0,no
+C10135,34,29,Month-to-month,Card,81.31,2465.89,4,no
+C10136,66,39,Two year,E-wallet,78.02,,2,yes
+C10137,68,9,Month-to-month,Cash,75.97,716.97,1,no
+C10138,35,48,One year,Card,109.44,5189.23,0,no
+C10139,18,12,Month-to-month,Bank transfer,43.31,504.11,3,no
+C10140,45,16,Month-to-month,Cash,68.63,1055.51,2,yes
+C10141,56,4,Month-to-month,Cash,98.32,404.49,3,yes
+C10142,45,69,Two year,Card,101.61,7049.53,1,no
+C10143,75,13,One year,Card,34.46,439.34,1,no
+C10144,68,6,Month-to-month,Bank transfer,62.19,377.19,1,no
+C10145,66,29,Month-to-month,Card,103.95,2963.94,1,no
+C10146,19,25,Month-to-month,Card,82.7,2056.82,3,yes
+C10147,70,21,Month-to-month,Card,74.88,1629.51,0,no
+C10148,64,22,Month-to-month,Card,64.56,1444.21,2,no
+C10149,42,18,Month-to-month,Bank transfer,60.4,1115.73,2,yes
+C10150,54,55,Two year,Bank transfer,77.21,4282.01,2,no
+C10151,69,39,Two year,Bank transfer,63.69,2605.97,0,no
+C10152,74,15,Month-to-month,E-wallet,68.94,1007.36,4,yes
+C10153,52,29,One year,Bank transfer,71.96,2037.23,2,no
+C10154,20,7,Month-to-month,Card,53.05,356.22,4,no
+C10155,56,27,One year,Card,83.3,2261.25,3,no
+C10156,60,10,Month-to-month,Card,140.0,1415.87,2,yes
+C10157,21,32,One year,Card,25.58,837.06,0,no
+C10158,68,37,One year,Card,78.1,2842.15,0,no
+C10159,30,19,One year,Card,51.0,921.74,1,yes
+C10160,73,3,Month-to-month,Card,84.44,256.67,2,yes
+C10161,52,41,Two year,Bank transfer,71.16,3063.06,0,no
+C10162,37,11,Month-to-month,Bank transfer,89.05,959.43,4,yes
+C10163,21,6,Month-to-month,Cash,99.39,577.49,7,yes
+C10164,19,43,One year,E-wallet,74.81,3146.63,3,no
+C10165,63,1,Month-to-month,Bank transfer,98.3,97.57,0,no
+C10166,41,62,Two year,Card,20.0,1209.11,1,no
+C10167,70,54,Two year,Bank transfer,109.76,5836.33,1,no
+C10168,32,28,Month-to-month,Card,79.38,2253.36,2,no
+C10169,75,68,Two year,Bank transfer,96.95,6490.43,1,no
+C10170,76,26,Month-to-month,Card,39.5,1016.33,1,yes
+C10171,24,10,Month-to-month,Bank transfer,49.23,469.66,4,yes
+C10172,58,14,Month-to-month,Card,73.65,1074.19,1,no
+C10173,76,42,Two year,Bank transfer,69.57,2894.73,0,no
+C10174,38,26,Month-to-month,E-wallet,77.08,,1,yes
+C10175,22,28,Month-to-month,E-wallet,97.11,2606.64,4,yes
+C10176,72,28,Month-to-month,Bank transfer,25.87,734.08,1,no
+C10177,47,45,Two year,Bank transfer,94.35,4400.22,0,no
+C10178,19,70,Two year,Card,70.21,4689.19,2,no
+C10179,70,42,One year,E-wallet,64.91,2629.51,2,yes
+C10180,60,42,Two year,Bank transfer,33.22,1345.9,1,no
+C10181,22,46,Two year,Card,82.58,3837.53,2,no
+C10182,34,11,Month-to-month,Card,20.0,229.27,1,yes
+C10183,19,27,Month-to-month,Cash,86.21,2313.18,1,no
+C10184,77,36,One year,Bank transfer,32.7,1158.81,0,no
+C10185,19,42,One year,Bank transfer,71.34,3075.93,0,no
+C10186,67,17,Month-to-month,Bank transfer,67.02,1166.98,2,no
+C10187,49,10,Month-to-month,Bank transfer,99.24,967.27,4,yes
+C10188,54,20,One year,Bank transfer,65.53,1266.15,0,no
+C10189,68,27,Month-to-month,Card,52.65,1401.34,2,no
+C10190,73,27,Two year,Bank transfer,57.33,1590.57,1,no
+C10191,25,16,Month-to-month,Bank transfer,101.82,1660.9,4,yes
+C10192,19,29,Month-to-month,Card,83.41,2459.01,0,yes
+C10193,25,28,Two year,E-wallet,60.36,1745.76,0,no
+C10194,60,7,Month-to-month,Card,64.09,438.63,2,no
+C10195,53,18,Month-to-month,Bank transfer,30.82,545.87,4,yes
+C10196,23,33,One year,Bank transfer,79.71,2510.05,0,no
+C10197,32,58,Two year,Bank transfer,26.0,1563.61,1,no
+C10198,51,1,Month-to-month,Bank transfer,88.79,89.52,7,yes
+C10199,63,9,Month-to-month,Cash,73.22,,2,yes
+C10200,39,45,One year,Bank transfer,129.67,5583.9,0,yes
+C10201,76,34,Two year,E-wallet,42.5,1477.28,0,no
+C10202,79,9,Month-to-month,E-wallet,67.43,621.97,0,no
+C10203,65,10,Month-to-month,,114.96,1168.7,4,no
+C10204,46,6,Month-to-month,Card,99.78,580.95,1,yes
+C10205,72,5,Month-to-month,Bank transfer,52.59,273.82,3,yes
+C10206,63,11,Month-to-month,Card,75.6,852.65,4,yes
+C10207,50,17,One year,Card,70.05,1209.64,4,yes
+C10208,45,1,Month-to-month,Card,77.05,78.21,4,yes
+C10209,69,9,Month-to-month,Bank transfer,52.53,491.89,1,no
+C10210,52,30,One year,Card,67.77,2120.18,0,no
+C10211,29,26,One year,E-wallet,30.05,788.77,1,no
+C10212,79,8,Month-to-month,Bank transfer,73.38,582.15,1,no
+C10213,22,52,Two year,E-wallet,81.25,4167.43,1,no
+C10214,61,36,One year,Card,64.31,2389.03,1,no
+C10215,58,24,One year,,29.62,721.16,1,no
+C10216,54,19,Month-to-month,Card,94.71,1723.42,2,yes
+C10217,21,13,Month-to-month,Bank transfer,79.11,991.63,3,no
+C10218,48,55,Two year,Card,51.85,2965.87,2,no
+C10219,73,14,Month-to-month,Cash,62.98,915.62,2,yes
+C10220,32,28,Month-to-month,Card,32.48,950.53,3,yes
+C10221,60,29,Month-to-month,Bank transfer,44.36,1277.16,2,no
+C10222,71,37,One year,Card,56.55,2151.79,1,no
+C10223,77,68,Two year,Bank transfer,100.71,7073.06,3,no
+C10224,50,8,Month-to-month,Bank transfer,54.01,424.12,1,no
+C10225,37,51,Two year,Card,86.01,4230.94,0,no
+C10226,61,20,Month-to-month,Card,56.54,1187.0,4,yes
+C10227,48,48,One year,Card,76.2,,1,yes
+C10228,56,31,One year,Card,66.47,2080.63,1,no
+C10229,63,23,Month-to-month,Cash,91.83,2143.82,1,yes
+C10230,62,14,Month-to-month,Bank transfer,56.63,807.23,2,yes
+C10231,33,6,Month-to-month,Card,30.69,179.64,2,yes
+C10232,64,67,Two year,Cash,35.45,2427.78,2,no
+C10233,51,37,One year,Card,56.7,2038.4,1,no
+C10234,75,27,Two year,Bank transfer,38.77,1081.23,1,no
+C10235,58,25,Two year,E-wallet,80.26,1950.14,1,no
+C10236,73,13,Month-to-month,Cash,58.36,773.6,2,no
+C10237,78,13,One year,E-wallet,129.37,1729.47,0,no
+C10238,79,10,Month-to-month,Bank transfer,26.56,257.34,1,no
+C10239,64,28,Month-to-month,Cash,75.09,2047.43,2,no
+C10240,55,35,Two year,Card,41.8,1503.83,0,no
+C10241,25,45,One year,Cash,57.66,,1,no
+C10242,41,28,Month-to-month,E-wallet,73.54,1995.44,3,no
+C10243,47,13,Month-to-month,Cash,20.0,258.84,3,yes
+C10244,66,22,One year,Card,75.92,1742.09,1,no
+C10245,54,24,Two year,Card,117.57,2839.14,0,no
+C10246,45,29,One year,Bank transfer,58.66,1682.03,1,yes
+C10247,27,28,Month-to-month,,76.5,2244.47,3,yes
+C10248,62,22,Month-to-month,Bank transfer,95.62,2096.01,6,no
+C10249,44,3,Month-to-month,Cash,65.9,196.39,1,yes
+C10250,20,18,One year,Bank transfer,55.48,989.82,0,no
+C10251,35,66,Two year,Card,20.0,1295.21,0,no
+C10252,72,2,Month-to-month,Bank transfer,86.02,169.04,5,yes
+C10253,25,8,Month-to-month,Card,67.17,547.45,2,no
+C10254,43,17,Month-to-month,Card,44.68,724.68,3,no
+C10255,49,25,One year,Card,73.16,1862.25,0,no
+C10256,23,26,Two year,E-wallet,55.41,1397.61,0,no
+C10257,28,14,Month-to-month,E-wallet,56.79,785.85,1,yes
+C10258,76,8,Month-to-month,Bank transfer,85.16,657.2,2,yes
+C10259,54,27,One year,Card,36.54,991.78,2,no
+C10260,31,23,Month-to-month,Bank transfer,96.18,2262.88,3,no
+C10261,28,61,Two year,E-wallet,35.06,2107.58,3,no
+C10262,44,2,Month-to-month,E-wallet,53.43,103.26,5,yes
+C10263,62,2,Month-to-month,Bank transfer,118.07,229.68,0,yes
+C10264,63,34,Two year,E-wallet,98.18,3444.31,1,no
+C10265,30,4,Month-to-month,Bank transfer,72.44,283.03,1,yes
+C10266,62,19,Month-to-month,Bank transfer,46.49,907.57,2,no
+C10267,73,12,Month-to-month,E-wallet,56.77,669.74,0,no
+C10268,32,23,Month-to-month,Card,71.83,1600.67,2,no
+C10269,19,2,Month-to-month,Card,70.94,145.11,0,yes
+C10270,77,27,Month-to-month,Card,67.73,1822.96,2,yes
+C10271,50,21,Month-to-month,Bank transfer,69.23,1385.69,3,yes
+C10272,66,14,Month-to-month,Bank transfer,64.64,946.58,0,no
+C10273,37,25,One year,Bank transfer,33.95,818.85,3,no
+C10274,36,38,One year,Bank transfer,57.09,2137.62,0,no
+C10275,31,9,Month-to-month,Card,92.87,826.2,3,yes
+C10276,31,15,Month-to-month,E-wallet,35.79,536.28,4,yes
+C10277,47,12,Month-to-month,Card,65.26,805.47,1,no
+C10278,24,51,Two year,Cash,49.51,2400.3,0,no
+C10279,70,41,Two year,Card,72.78,3113.03,1,no
+C10280,49,5,Month-to-month,,60.28,305.8,1,yes
+C10281,74,1,Month-to-month,Bank transfer,106.93,111.75,2,yes
+C10282,49,9,Month-to-month,E-wallet,82.66,767.55,0,yes
+C10283,36,4,Month-to-month,Card,37.2,155.17,2,no
+C10284,49,16,One year,Cash,86.78,1402.5,1,no
+C10285,27,26,Month-to-month,Bank transfer,50.63,1297.6,4,no
+C10286,69,5,Month-to-month,Bank transfer,55.58,276.31,3,yes
+C10287,62,1,Month-to-month,Bank transfer,77.85,79.08,1,no
+C10288,27,4,Month-to-month,Card,57.71,229.15,1,no
+C10289,54,15,Month-to-month,Bank transfer,92.32,1416.88,3,yes
+C10290,51,59,Two year,Card,50.64,2865.81,1,no
+C10291,30,15,Month-to-month,Card,54.53,844.94,0,yes
+C10292,25,67,Two year,Bank transfer,53.59,3484.32,0,yes
+C10293,65,10,Month-to-month,Bank transfer,55.86,583.4,1,yes
+C10294,34,68,Two year,Card,97.48,6400.31,0,no
+C10295,50,41,Two year,Card,85.72,,0,no
+C10296,33,30,Two year,Card,112.75,3487.99,1,no
+C10297,58,44,Two year,Card,126.69,5752.02,0,no
+C10298,21,40,One year,Bank transfer,44.23,1811.44,0,no
+C10299,40,21,One year,Card,71.76,1576.36,1,no
+C10300,51,46,One year,E-wallet,40.59,1824.3,1,no
+C10301,45,8,Month-to-month,Card,50.56,417.69,0,yes
+C10302,55,7,Month-to-month,Card,54.25,374.13,1,no
+C10303,29,10,Month-to-month,E-wallet,43.57,437.33,1,yes
+C10304,45,27,Two year,Card,43.7,1173.48,2,no
+C10305,64,8,Month-to-month,Bank transfer,66.39,504.87,1,yes
+C10306,38,27,Month-to-month,Cash,39.58,1076.62,3,no
+C10307,27,17,One year,Cash,91.05,1586.16,0,no
+C10308,70,26,Month-to-month,E-wallet,47.06,1183.74,3,yes
+C10309,66,20,Month-to-month,Card,140.0,2920.86,2,yes
+C10310,60,10,Month-to-month,Bank transfer,58.72,588.99,3,no
+C10311,67,7,Month-to-month,Cash,71.8,486.43,3,yes
+C10312,66,22,Month-to-month,Cash,37.62,839.72,2,no
+C10313,64,10,Month-to-month,Card,112.65,1091.8,2,yes
+C10314,49,8,Month-to-month,Card,97.99,749.7,1,yes
+C10315,19,27,Month-to-month,Card,77.42,2129.08,0,no
+C10316,55,14,Month-to-month,Card,36.33,488.82,3,no
+C10317,34,32,One year,Bank transfer,75.27,2313.79,2,no
+C10318,65,15,Month-to-month,Card,41.96,644.5,4,no
+C10319,47,31,Two year,Card,106.56,3156.43,0,no
+C10320,74,54,Two year,Card,90.23,5023.35,0,no
+C10321,54,21,Month-to-month,Bank transfer,72.39,1565.21,0,yes
+C10322,52,6,Month-to-month,Card,20.0,115.7,3,yes
+C10323,74,5,Month-to-month,Bank transfer,45.41,227.47,2,yes
+C10324,47,61,Two year,Card,87.19,5104.05,3,no
+C10325,41,21,One year,Cash,100.32,2134.65,1,no
+C10326,41,30,Two year,Card,97.73,2803.76,2,no
+C10327,72,5,Month-to-month,Bank transfer,30.2,157.71,1,no
+C10328,64,14,One year,Card,77.54,1053.83,0,no
+C10329,28,27,Month-to-month,Card,95.39,2622.64,3,yes
+C10330,48,39,One year,Card,28.54,1071.69,1,no
+C10331,41,1,Month-to-month,Card,69.8,67.77,2,yes
+C10332,58,31,One year,Card,76.85,2370.66,1,no
+C10333,21,34,Two year,Bank transfer,62.48,2139.85,1,no
+C10334,62,24,Month-to-month,Bank transfer,23.7,597.18,2,no
+C10335,64,38,One year,Card,61.86,2239.24,2,no
+C10336,32,5,Month-to-month,Bank transfer,61.82,293.65,3,yes
+C10337,27,12,One year,Bank transfer,66.3,783.7,0,no
+C10338,56,21,Month-to-month,Card,55.91,1158.4,1,yes
+C10339,33,40,Two year,Card,58.92,2447.26,0,no
+C10340,76,14,Month-to-month,Card,69.01,1006.0,0,no
+C10341,66,28,Two year,Card,81.06,2356.05,1,yes
+C10342,77,48,Two year,Bank transfer,62.39,2887.86,2,no
+C10343,51,35,One year,Cash,59.76,2073.22,0,no
+C10344,76,25,One year,Cash,72.31,1852.2,1,no
+C10345,18,28,One year,Cash,21.98,603.91,1,no
+C10346,35,34,Two year,Bank transfer,81.93,2831.09,0,no
+C10347,18,25,Month-to-month,Card,69.99,1703.76,1,no
+C10348,60,44,One year,Card,70.99,3068.4,2,no
+C10349,49,1,Month-to-month,Card,94.02,97.41,1,no
+C10350,35,24,One year,Card,21.18,495.64,2,no
+C10351,36,25,Month-to-month,Card,20.65,540.22,0,no
+C10352,57,44,One year,Bank transfer,76.85,3315.89,1,no
+C10353,29,32,One year,Card,69.82,2127.78,3,no
+C10354,49,14,Month-to-month,Card,74.25,1014.02,2,no
+C10355,56,5,Month-to-month,E-wallet,58.45,282.64,1,yes
+C10356,32,28,One year,Card,86.61,2426.74,0,no
+C10357,32,36,One year,E-wallet,93.32,3229.41,1,no
+C10358,39,29,Month-to-month,Card,82.1,2410.91,2,no
+C10359,54,24,One year,Bank transfer,63.48,1580.64,0,no
+C10360,33,30,Two year,Card,20.0,591.75,2,no
+C10361,41,8,Month-to-month,Bank transfer,89.23,690.18,1,no
+C10362,51,8,Month-to-month,Card,100.54,796.28,1,yes
+C10363,29,27,Month-to-month,Card,86.11,2391.46,3,no
+C10364,53,48,One year,Bank transfer,48.01,2325.56,0,no
+C10365,26,14,Month-to-month,Card,86.84,1167.27,4,yes
+C10366,26,24,One year,Card,91.51,2204.41,2,no
+C10367,32,44,One year,Cash,108.97,4779.38,2,no
+C10368,35,27,Month-to-month,Card,48.1,1276.25,1,no
+C10369,19,70,Two year,Bank transfer,64.34,4328.22,2,no
+C10370,77,12,One year,Bank transfer,88.68,1115.36,1,no
+C10371,37,11,Month-to-month,Card,71.44,760.38,1,no
+C10372,67,22,Month-to-month,Bank transfer,42.07,897.1,2,no
+C10373,73,24,Month-to-month,Card,80.37,1860.52,2,no
+C10374,67,5,Month-to-month,E-wallet,84.47,425.31,2,yes
+C10375,69,10,Month-to-month,Card,72.2,717.93,2,yes
+C10376,24,49,Two year,Card,75.49,3606.37,5,yes
+C10377,41,24,Month-to-month,Card,63.53,1513.96,2,yes
+C10378,64,4,Month-to-month,Cash,106.96,435.26,1,no
+C10379,53,29,One year,E-wallet,47.48,1346.86,2,no
+C10380,18,38,One year,Cash,55.32,2189.45,0,no
+C10381,53,68,Two year,Bank transfer,70.27,4685.83,0,no
+C10382,67,35,One year,Bank transfer,91.97,3121.8,1,no
+C10383,69,13,Month-to-month,Bank transfer,32.57,442.66,6,yes
+C10384,41,19,Month-to-month,Cash,37.24,729.53,0,no
+C10385,32,29,Two year,Bank transfer,20.0,570.9,0,no
+C10386,37,23,One year,Card,70.82,1684.47,0,no
+C10387,36,26,Two year,Bank transfer,42.04,1095.1,0,no
+C10388,39,25,Month-to-month,Bank transfer,60.39,1486.61,4,yes
+C10389,36,64,Two year,Card,86.53,5725.99,1,no
+C10390,46,25,One year,Card,53.96,1383.02,1,no
+C10391,20,11,Month-to-month,Card,75.78,816.73,2,yes
+C10392,35,22,One year,E-wallet,62.52,1390.11,2,no
+C10393,37,20,One year,Card,86.8,1713.33,1,no
+C10394,27,21,Month-to-month,E-wallet,81.88,1633.69,2,yes
+C10395,72,5,Month-to-month,Bank transfer,52.7,275.67,1,no
+C10396,59,65,Two year,E-wallet,65.78,4296.92,0,no
+C10397,74,22,Month-to-month,Card,96.09,2134.79,1,no
+C10398,52,25,Month-to-month,Cash,79.83,2015.69,1,no
+C10399,24,21,Month-to-month,Bank transfer,35.08,740.41,1,no
+C10400,74,9,Month-to-month,Card,86.39,761.19,3,no
+C10401,46,45,Two year,Card,42.88,2020.6,0,no
+C10402,60,13,One year,Card,105.31,1385.69,3,no
+C10403,41,10,Month-to-month,Card,95.6,972.34,2,yes
+C10404,48,32,Two year,E-wallet,77.25,2460.82,0,no
+C10405,48,70,Two year,Cash,73.93,5065.32,1,no
+C10406,35,5,Month-to-month,Bank transfer,64.77,309.74,5,yes
+C10407,52,38,Two year,Bank transfer,86.96,3254.99,0,no
+C10408,63,7,Month-to-month,,60.73,411.34,2,no
+C10409,19,33,Two year,E-wallet,75.89,2544.96,0,no
+C10410,26,38,One year,E-wallet,91.8,3620.61,0,no
+C10411,70,41,One year,Card,55.95,2248.7,0,no
+C10412,53,20,Month-to-month,Cash,54.6,1073.75,0,yes
+C10413,78,70,Two year,Card,40.14,2857.67,1,no
+C10414,55,2,Month-to-month,E-wallet,43.39,83.74,3,no
+C10415,58,6,Month-to-month,Cash,24.29,152.0,2,yes
+C10416,73,24,Month-to-month,E-wallet,88.25,2089.16,1,yes
+C10417,58,49,One year,Card,115.22,5420.63,2,no
+C10418,38,4,Month-to-month,Bank transfer,105.63,408.77,3,yes
+C10419,50,57,Two year,Card,29.35,1745.35,1,no
+C10420,32,47,One year,E-wallet,88.12,4036.91,0,yes
+C10421,38,1,Month-to-month,Card,105.55,107.26,3,yes
+C10422,60,27,Month-to-month,Bank transfer,58.58,1527.28,1,yes
+C10423,27,1,Month-to-month,Cash,72.54,70.32,0,yes
+C10424,59,27,One year,Card,20.0,560.48,2,no
+C10425,54,64,Two year,Card,76.67,4734.17,0,no
+C10426,37,17,Month-to-month,Bank transfer,43.41,702.46,1,yes
+C10427,20,69,Two year,Bank transfer,74.99,5174.95,1,no
+C10428,61,12,Month-to-month,Card,30.97,385.12,3,no
+C10429,69,30,Two year,Card,83.57,2463.47,0,no
+C10430,63,68,Two year,Bank transfer,95.61,6259.73,4,no
+C10431,44,14,One year,Bank transfer,50.42,739.92,1,no
+C10432,58,47,One year,Bank transfer,41.58,1988.8,0,no
+C10433,43,50,Two year,Card,20.0,1035.07,0,no
+C10434,40,13,Month-to-month,Bank transfer,63.34,844.18,0,no
+C10435,38,16,Month-to-month,Card,55.46,904.95,0,no
+C10436,31,5,Month-to-month,Card,31.22,154.3,4,yes
+C10437,78,19,Month-to-month,E-wallet,81.33,1518.13,2,yes
+C10438,59,30,One year,Card,58.75,1800.74,0,no
+C10439,28,45,One year,Bank transfer,43.11,1981.99,0,no
+C10440,71,45,Two year,,56.14,2640.13,0,no
+C10441,27,2,Month-to-month,Bank transfer,96.78,194.89,3,yes
+C10442,54,29,One year,Bank transfer,85.07,2416.36,2,no
+C10443,28,18,Month-to-month,Card,66.75,1200.24,3,no
+C10444,40,4,Month-to-month,Card,85.48,345.81,1,yes
+C10445,58,43,One year,Card,40.98,1749.23,0,yes
+C10446,79,65,Two year,E-wallet,70.81,4736.65,0,no
+C10447,79,18,One year,E-wallet,73.68,1337.46,1,no
+C10448,73,29,Month-to-month,Card,58.25,1606.38,2,yes
+C10449,32,28,One year,Card,80.89,2280.74,2,no
+C10450,23,6,Month-to-month,Card,50.49,,1,yes
+C10451,74,42,Two year,Bank transfer,82.75,,0,no
+C10452,75,21,One year,Bank transfer,83.8,1744.62,2,no
+C10453,35,18,Month-to-month,Bank transfer,20.0,362.68,3,yes
+C10454,19,5,Month-to-month,Cash,99.76,,0,no
+C10455,58,7,Month-to-month,Card,20.0,140.44,1,yes
+C10456,22,51,Two year,Bank transfer,54.6,2664.11,0,no
+C10457,20,26,Month-to-month,Bank transfer,95.63,2585.16,1,no
+C10458,76,12,One year,Card,62.07,775.41,0,no
+C10459,48,49,One year,Cash,33.35,1642.0,1,no
+C10460,24,12,One year,Card,42.66,514.82,1,no
+C10461,58,18,Month-to-month,E-wallet,95.67,1645.87,1,no
+C10462,40,64,Two year,E-wallet,21.96,1419.21,2,no
+C10463,51,17,Month-to-month,Cash,98.22,1657.91,6,yes
+C10464,73,16,One year,Bank transfer,68.62,1120.87,1,no
+C10465,32,15,One year,Card,40.19,575.55,0,no
+C10466,58,37,One year,E-wallet,55.42,2093.78,1,no
+C10467,69,31,Two year,E-wallet,44.57,1352.23,0,no
+C10468,44,16,Month-to-month,Bank transfer,91.66,1488.81,0,no
+C10469,78,22,Month-to-month,E-wallet,88.31,1967.52,2,yes
+C10470,45,23,Month-to-month,Card,27.02,604.48,1,yes
+C10471,46,17,Month-to-month,Bank transfer,59.91,1012.41,2,yes
+C10472,72,8,Month-to-month,E-wallet,48.42,400.36,4,yes
+C10473,57,22,Month-to-month,Card,102.34,2275.25,2,no
+C10474,71,21,Month-to-month,Bank transfer,36.25,728.42,2,no
+C10475,67,29,Month-to-month,Cash,110.11,3174.96,2,no
+C10476,62,5,Month-to-month,E-wallet,69.17,339.34,0,no
+C10477,32,13,One year,E-wallet,40.95,539.89,0,no
+C10478,42,26,One year,Card,53.07,1395.63,1,no
+C10479,71,15,Month-to-month,Cash,49.96,712.71,4,yes
+C10480,56,28,Month-to-month,Card,38.13,1079.14,0,no
+C10481,35,1,Month-to-month,Bank transfer,72.37,74.07,1,yes
+C10482,38,24,One year,Bank transfer,39.3,968.55,0,no
+C10483,66,24,Month-to-month,E-wallet,20.0,458.83,1,no
+C10484,29,11,Month-to-month,Cash,60.51,652.54,5,yes
+C10485,24,16,Month-to-month,E-wallet,24.93,395.74,2,yes
+C10486,65,13,Month-to-month,Bank transfer,51.2,644.29,2,no
+C10487,35,12,Month-to-month,Bank transfer,47.27,562.74,1,yes
+C10488,65,47,One year,Bank transfer,48.22,2169.14,0,no
+C10489,51,27,One year,,120.02,3115.2,2,no
+C10490,79,26,One year,Card,71.41,1887.98,1,no
+C10491,50,24,One year,Bank transfer,76.13,1783.74,1,no
+C10492,71,20,One year,E-wallet,25.59,522.62,0,no
+C10493,70,12,Month-to-month,E-wallet,53.65,614.71,5,no
+C10494,31,39,One year,E-wallet,75.38,2958.25,0,no
+C10495,79,20,Month-to-month,Card,44.39,878.16,1,yes
+C10496,64,14,Month-to-month,Bank transfer,92.7,1336.34,2,yes
+C10497,24,30,One year,Card,39.93,1231.91,1,no
+C10498,18,11,Month-to-month,Card,62.84,682.64,3,yes
+C10499,34,28,Month-to-month,Bank transfer,55.35,1568.82,2,yes
+C10500,19,22,One year,Card,74.11,1586.0,0,no
+C10501,40,62,Two year,Card,53.99,3374.3,2,no
+C10502,79,65,Two year,Bank transfer,63.23,3937.85,1,no
+C10503,47,6,Month-to-month,Bank transfer,64.1,382.08,0,yes
+C10504,19,27,Month-to-month,Bank transfer,51.64,1350.04,2,no
+C10505,48,15,One year,Card,82.13,1279.18,1,no
+C10506,31,29,Month-to-month,Bank transfer,75.96,2190.7,4,yes
+C10507,71,69,Two year,Bank transfer,67.78,4719.27,2,no
+C10508,23,8,Month-to-month,Bank transfer,59.24,467.3,4,yes
+C10509,65,7,Month-to-month,Bank transfer,89.91,616.07,1,no
+C10510,45,10,Month-to-month,Card,64.1,621.96,1,yes
+C10511,19,28,Two year,Cash,62.33,1817.12,2,no
+C10512,59,26,Month-to-month,Card,72.62,1944.66,0,no
+C10513,46,22,Month-to-month,Bank transfer,112.41,2382.32,2,yes
+C10514,65,19,Month-to-month,Card,36.49,710.42,6,yes
+C10515,56,26,Month-to-month,Bank transfer,89.25,2301.6,1,yes
+C10516,66,19,Month-to-month,Card,22.67,409.86,1,yes
+C10517,46,28,One year,E-wallet,75.43,2118.03,1,no
+C10518,18,12,Month-to-month,Card,109.38,1264.0,1,yes
+C10519,26,42,Two year,Bank transfer,82.22,3353.07,2,no
+C10520,46,39,Two year,Card,74.27,2953.31,2,no
+C10521,42,22,Month-to-month,Card,55.99,1201.87,2,no
+C10522,67,19,Month-to-month,Bank transfer,70.78,1397.52,1,yes
+C10523,43,36,One year,Bank transfer,63.7,2329.24,3,no
+C10524,71,16,Month-to-month,Bank transfer,50.35,832.37,3,yes
+C10525,29,23,Month-to-month,Cash,62.75,1459.87,2,yes
+C10526,41,53,Two year,E-wallet,74.96,4119.42,0,no
+C10527,64,39,Two year,Cash,50.82,1954.57,1,no
+C10528,25,13,One year,Card,49.84,651.1,0,no
+C10529,37,4,Month-to-month,E-wallet,35.99,144.19,0,no
+C10530,64,14,One year,Bank transfer,79.77,1161.87,0,no
+C10531,54,44,One year,Bank transfer,83.63,3556.42,1,no
+C10532,66,21,Month-to-month,Cash,75.79,1604.01,4,yes
+C10533,49,43,One year,Bank transfer,94.13,4150.57,1,no
+C10534,71,25,Month-to-month,E-wallet,72.2,1781.54,0,no
+C10535,72,24,Month-to-month,E-wallet,79.8,1985.6,4,yes
+C10536,78,15,Month-to-month,Card,77.6,1149.22,3,yes
+C10537,25,3,Month-to-month,Bank transfer,67.71,196.49,3,yes
+C10538,54,1,Month-to-month,Bank transfer,56.73,57.21,1,yes
+C10539,25,32,Two year,Cash,125.35,3979.34,2,no
+C10540,32,58,Two year,E-wallet,58.7,3239.54,1,no
+C10541,36,26,One year,Card,53.35,1327.43,1,no
+C10542,58,60,Two year,Card,80.85,4703.18,3,no
+C10543,44,33,Two year,Card,76.3,2585.71,1,no
+C10544,71,7,Month-to-month,Bank transfer,34.88,253.73,6,yes
+C10545,36,29,Month-to-month,Card,98.07,2857.01,2,yes
+C10546,56,29,Month-to-month,E-wallet,67.65,1884.47,2,no
+C10547,65,11,Month-to-month,Bank transfer,42.23,466.13,5,yes
+C10548,78,19,One year,E-wallet,99.72,,1,no
+C10549,33,21,Month-to-month,Card,85.64,1843.31,4,no
+C10550,63,28,Month-to-month,Bank transfer,38.39,1052.46,7,yes
+C10551,23,26,Month-to-month,Card,114.43,2863.28,1,no
+C10552,51,19,Month-to-month,E-wallet,86.47,1708.76,4,yes
+C10553,43,44,Two year,,69.75,3177.67,0,no
+C10554,77,19,Month-to-month,Card,109.76,1992.37,2,no
+C10555,65,10,Month-to-month,Card,73.98,763.75,2,yes
+C10556,75,11,Month-to-month,E-wallet,69.3,731.6,0,yes
+C10557,70,18,Month-to-month,Card,53.49,920.77,0,yes
+C10558,43,35,One year,Bank transfer,84.55,3035.78,1,no
+C10559,63,17,Month-to-month,E-wallet,81.92,1397.7,3,no
+C10560,19,12,Month-to-month,E-wallet,70.37,,1,yes
+C10561,52,12,Month-to-month,Card,50.25,627.35,3,yes
+C10562,20,70,Two year,Card,73.25,5301.48,0,no
+C10563,62,16,One year,Bank transfer,68.26,1043.85,1,no
+C10564,77,40,One year,Card,36.66,1483.42,1,no
+C10565,60,15,One year,,33.2,511.56,3,yes
+C10566,70,24,One year,Card,84.13,2029.31,1,no
+C10567,32,14,Month-to-month,Bank transfer,20.0,293.52,5,no
+C10568,79,2,Month-to-month,Card,75.14,153.08,2,no
+C10569,52,6,Month-to-month,Bank transfer,58.05,334.51,5,yes
+C10570,59,10,Month-to-month,Card,102.71,996.11,1,no
+C10571,65,26,Two year,Bank transfer,57.66,,0,no
+C10572,57,11,Month-to-month,Card,86.49,,2,no
+C10573,37,27,One year,Cash,60.08,1557.0,1,yes
+C10574,55,24,Two year,Bank transfer,72.84,1678.29,1,no
+C10575,58,4,Month-to-month,Card,88.42,363.0,6,yes
+C10576,71,47,Two year,Card,58.44,2627.02,1,no
+C10577,47,17,One year,Card,94.91,1543.86,0,no
+C10578,49,37,Two year,Card,45.16,1735.89,1,no
+C10579,49,20,Month-to-month,Card,77.36,1593.69,1,no
+C10580,25,2,Month-to-month,E-wallet,93.07,193.24,0,yes
+C10581,23,10,Month-to-month,Bank transfer,86.5,878.02,5,yes
+C10582,19,1,Month-to-month,Card,117.91,115.82,1,yes
+C10583,59,28,Month-to-month,Bank transfer,50.91,1483.4,2,no
+C10584,43,58,Two year,Card,35.52,2018.69,0,no
+C10585,71,45,One year,Cash,45.14,1985.7,0,no
+C10586,61,6,Month-to-month,Card,86.51,539.12,1,yes
+C10587,26,3,Month-to-month,E-wallet,82.45,251.82,4,yes
+C10588,24,14,Month-to-month,E-wallet,72.56,1056.03,2,yes
+C10589,40,22,Month-to-month,Card,41.93,890.72,3,no
+C10590,75,45,Two year,Card,89.17,4194.14,1,no
+C10591,21,26,Month-to-month,Card,39.38,1035.42,5,yes
+C10592,29,10,Month-to-month,E-wallet,98.97,1006.33,0,yes
+C10593,19,20,One year,Bank transfer,140.0,2915.94,2,yes
+C10594,43,14,Month-to-month,Bank transfer,79.16,1095.02,1,no
+C10595,79,6,Month-to-month,E-wallet,84.58,518.62,3,yes
+C10596,60,47,One year,E-wallet,57.68,2749.01,0,no
+C10597,48,22,One year,Bank transfer,24.74,559.94,0,no
+C10598,26,44,Two year,Bank transfer,54.93,2512.86,1,no
+C10599,40,39,One year,E-wallet,42.68,1694.49,0,no
+C10003,70,21,One year,Card,81.49,1778.76,1,no
+C10015,29,4,Month-to-month,Card,65.93,276.67,3,no
+C10042,37,43,One year,Cash,103.13,4448.1,0,no

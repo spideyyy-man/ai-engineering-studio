@@ -1,5 +1,12 @@
-import { useMemo } from "react";
-import Plot from "react-plotly.js";
+import { useMemo, type ComponentType } from "react";
+import PlotImport from "react-plotly.js";
+
+// react-plotly.js is a CommonJS package. Depending on the bundler (Vite 8 /
+// Rolldown in dev vs. build), the default import is either the component or a
+// `{ default: Component }` wrapper, so unwrap it once here.
+const Plot = ((PlotImport as unknown as { default?: unknown }).default ?? PlotImport) as ComponentType<
+  Record<string, unknown>
+>;
 
 interface Props {
   figure: unknown;
@@ -26,7 +33,6 @@ export default function PlotlyChart({ figure, height = 320 }: Props) {
 
   return (
     <Plot
-      // @ts-expect-error — react-plotly types are loose
       data={fig.data}
       layout={fig.layout}
       useResizeHandler

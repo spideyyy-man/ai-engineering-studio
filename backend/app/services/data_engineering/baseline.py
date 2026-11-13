@@ -90,6 +90,12 @@ def compute_baseline(df: pd.DataFrame, target_col: str, random_state: int = 42) 
         d_pred, t_pred = dummy.predict(X_te), tree.predict(X_te)
         n_classes = int(pd.Series(y_te).nunique())
         avg = "binary" if n_classes == 2 else "weighted"
+        f1_kwargs = {"average": avg, "zero_division": 0}
+        if avg == "binary":
+            # Text labels ("yes"/"no") need an explicit positive class;
+            # sklearn's default pos_label=1 only works for 0/1 targets.
+            f1_kwargs["pos_label"] = tree.classes_[1] if len(tree.classes_) == 2 else sorted(
+                pd.Series(y_te).unique().tolist(), key=str)[1]
 
         primary_metric = "accuracy"
         dummy_score = _safe_float(accuracy_score(y_te, d_pred))
@@ -101,8 +107,8 @@ def compute_baseline(df: pd.DataFrame, target_col: str, random_state: int = 42) 
             "tree_score": tree_score,
             "delta": _safe_float((tree_score or 0) - (dummy_score or 0)),
             "extra": {
-                "f1_dummy": _safe_float(f1_score(y_te, d_pred, average=avg, zero_division=0)),
-                "f1_tree": _safe_float(f1_score(y_te, t_pred, average=avg, zero_division=0)),
+                "f1_dummy": _safe_float(f1_score(y_te, d_pred, **f1_kwargs)),
+                "f1_tree": _safe_float(f1_score(y_te, t_pred, **f1_kwargs)),
                 "n_classes": n_classes,
                 "n_train": int(len(X_tr)),
                 "n_test": int(len(X_te)),
