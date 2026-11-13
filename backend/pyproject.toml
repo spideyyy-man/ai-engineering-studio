@@ -1,0 +1,25 @@
+# Tool configuration only; dependencies live in requirements*.txt.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+extend-exclude = ["storage"]
+
+[tool.ruff.lint]
+# Ruff's defaults (syntax errors, undefined names, unused imports/variables)
+# plus bugbear for common mistakes.
+select = ["E4", "E7", "E9", "F", "B"]
+ignore = [
+    "B008",  # FastAPI's Depends()/Query() in defaults is the intended pattern
+    "B904",  # raise ... from err inside except: nice-to-have, not enforced yet
+    "E702",  # semicolon-joined statements: existing compact style
+    "E741",  # variables named `l`: existing style
+]

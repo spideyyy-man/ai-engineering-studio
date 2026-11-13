@@ -4,7 +4,7 @@ from __future__ import annotations
 from datetime import datetime
 from pathlib import Path
 
-from fastapi import APIRouter, BackgroundTasks, Depends, File, Form, Query, UploadFile
+from fastapi import APIRouter, Depends, File, Form, Query, UploadFile
 from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 
@@ -23,7 +23,6 @@ from ..schemas import (
     CodegenResponse,
     DatasetRead,
     DatasetSummary,
-    HistoryEntry,
     HistoryResponse,
     MessageResponse,
     PipelineExportResponse,

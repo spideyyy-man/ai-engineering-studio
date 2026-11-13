@@ -1,7 +1,6 @@
 """OpenAI provider — optional, requires OPENAI_API_KEY."""
 from __future__ import annotations
 
-from typing import Any
 
 from ...core.errors import ProviderError
 from .base import BaseLLMProvider, ChatMessage, LLMResponse

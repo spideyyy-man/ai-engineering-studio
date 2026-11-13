@@ -37,7 +37,7 @@ export default function HistoryPanel({ entries, onUndo, busy }: Props) {
       </div>
 
       <ol className="space-y-1.5">
-        {entries.map((e, i) => {
+        {entries.map((e) => {
           const isOpen = expanded === e.step;
           const diff = e.stats_diff_json ?? {};
           return (

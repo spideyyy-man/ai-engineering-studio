@@ -2,3 +2,7 @@ node_modules
 dist
 .vite
 *.log
+*.tsbuildinfo
+# tsc -b output for vite.config.ts; Vite would load a stale .js before the .ts
+vite.config.js
+vite.config.d.ts

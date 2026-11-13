@@ -2,16 +2,20 @@
 # reachable from other machines on your network. Change this only behind auth.
 services:
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      args:
+        # Set to "true" to include TensorFlow for in-app Deep Learning training
+        # (adds a few GB to the image).
+        INSTALL_DL: "false"
     container_name: aies-backend
     ports:
       - "127.0.0.1:8000:8000"
     env_file:
       - .env
+    # Data (including the SQLite database) lives in ./backend/storage on the host.
     volumes:
       - ./backend/storage:/app/storage
-    depends_on:
-      - postgres
     networks:
       - aies
 
@@ -24,20 +28,6 @@ services:
       - VITE_API_URL=http://localhost:8000
     depends_on:
       - backend
-    networks:
-      - aies
-
-  postgres:
-    image: postgres:16-alpine
-    container_name: aies-postgres
-    environment:
-      POSTGRES_USER: aies
-      POSTGRES_PASSWORD: aies
-      POSTGRES_DB: aies
-    ports:
-      - "127.0.0.1:5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
     networks:
       - aies
 
@@ -54,7 +44,6 @@ services:
     profiles: ["ollama"]
 
 volumes:
-  pgdata:
   ollama_data:
 
 networks:

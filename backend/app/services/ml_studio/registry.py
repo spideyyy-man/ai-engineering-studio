@@ -10,7 +10,7 @@ Fixed params (always applied, not user-editable) live under `fixed_params`.
 """
 from __future__ import annotations
 
-from typing import Any, Callable
+from typing import Any
 
 from sklearn.cluster import DBSCAN, AgglomerativeClustering, KMeans
 from sklearn.ensemble import (

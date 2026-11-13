@@ -9,7 +9,6 @@ import pandas as pd
 
 def build_recommendations(df: pd.DataFrame, target_col: str | None = None) -> list[dict[str, Any]]:
     recs: list[dict[str, Any]] = []
-    n_rows = len(df)
 
     numeric_df = df.select_dtypes(include=[np.number])
     cat_cols = [c for c in df.columns if df[c].dtype == "object" or str(df[c].dtype).startswith("category")]

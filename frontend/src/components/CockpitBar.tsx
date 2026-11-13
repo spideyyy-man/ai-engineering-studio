@@ -35,7 +35,6 @@ export default function CockpitBar({
   const issuesTotal = quality?.issues.length ?? 0;
   const duplicates = profile?.duplicates ?? null;
 
-  const active = tabs.find((t) => t.key === activeSection);
 
   return (
     <div className="sticky top-0 z-30 -mx-1 mb-4 rounded-xl border border-bg-border bg-bg/85 backdrop-blur shadow-lg">

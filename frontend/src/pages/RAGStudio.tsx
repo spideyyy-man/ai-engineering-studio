@@ -79,7 +79,7 @@ export default function RAGStudio() {
       setActiveIdx((cur) => (rows.find((r) => r.id === cur) ? cur : rows[0]?.id ?? ""));
     });
   };
-  useEffect(refreshIndexes, [projectId]); // eslint-disable-line
+  useEffect(refreshIndexes, [projectId]);
 
   function applyStrategy(key: string) {
     setStrategy(key);

@@ -43,7 +43,7 @@ Architecture details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · API: [docs
 
 ## Quick start
 
-Requirements: Python 3.11, Node.js 20+, and optionally [Ollama](https://ollama.com) for the LLM features.
+Requirements: Python 3.11 or newer (3.11–3.12 if you want TensorFlow), Node.js 20.19+ or 22.13+, and optionally [Ollama](https://ollama.com) for the LLM features.
 
 ### 1. Configure
 
@@ -61,12 +61,14 @@ python -m venv .venv
 .\.venv\Scripts\activate         # Windows PowerShell
 # source .venv/bin/activate      # macOS/Linux
 pip install -r requirements.txt
+# optional, for in-app Deep Learning training (Python 3.9-3.12 only):
+# pip install -r requirements-dl.txt
 uvicorn app.main:app --reload --port 8000
 ```
 
 The API runs at <http://localhost:8000>, with interactive docs at <http://localhost:8000/docs>.
 
-> `requirements.txt` is currently large (it includes TensorFlow and several RAG libraries that aren't used yet), so the first install can take a while. Slimming it down is on the list.
+> Without TensorFlow, DL Studio still scaffolds, validates and exports Keras code. Only in-app training needs `requirements-dl.txt`.
 
 ### 3. Frontend
 
@@ -92,7 +94,28 @@ ollama pull nomic-embed-text
 docker compose up --build
 ```
 
-Add `--profile ollama` to also start an Ollama container.
+Add `--profile ollama` to also start an Ollama container. To include TensorFlow in the backend image, set `INSTALL_DL: "true"` under `backend.build.args` in `docker-compose.yml`.
+
+> The Docker setup isn't covered by CI yet. If something doesn't work, please open an issue.
+
+---
+
+## Development
+
+```bash
+# backend: lint + tests
+cd backend
+pip install -r requirements-dev.txt
+ruff check .
+pytest
+
+# frontend: lint + type-check + build
+cd frontend
+npm run lint
+npm run build
+```
+
+GitHub Actions runs the same checks on every push and pull request (`.github/workflows/ci.yml`). The tests use a throwaway storage folder and never call a real LLM.
 
 ---
 
@@ -118,6 +141,7 @@ backend/
     models/       SQLAlchemy tables
     schemas/      Pydantic request/response models
     core/         errors, logging, storage paths
+  tests/          pytest suite (API + safety checks)
   storage/        created at runtime (datasets, models, indexes, SQLite DB)
 frontend/
   src/
@@ -137,7 +161,7 @@ Contributions are welcome. Good places to start:
 - Wire up a real vector store (FAISS or Chroma) in `services/rag_studio/`
 - Add PDF/DOCX loading to RAG Studio
 - Build the first Deployment generator: a FastAPI `/predict` service for a trained ML model
-- Add tests (there are none yet) and a CI workflow
+- Add tests for the parts that aren't covered yet (auto-fix, transforms and undo, DL training)
 
 Open an issue first for anything large, so we can agree on the approach.
 

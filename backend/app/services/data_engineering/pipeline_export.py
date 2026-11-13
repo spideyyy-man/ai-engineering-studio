@@ -194,7 +194,6 @@ def _sklearn_lines(history: list[dict[str, Any]]) -> tuple[list[str], dict[str, 
 def build_pipeline_export(dataset_name: str, history: list[dict[str, Any]]) -> str:
     """Return a fully-runnable Python module as a string."""
     df_lines: list[str] = []
-    seen_skipped: set[str] = set()
 
     for entry in history:
         op = entry["operation"]

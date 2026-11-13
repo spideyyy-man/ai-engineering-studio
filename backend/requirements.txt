@@ -1,76 +1,40 @@
+# Core backend dependencies: only packages the app actually imports.
+# Optional extras live in separate files:
+#   requirements-dl.txt   TensorFlow, for in-app Deep Learning training
+#   requirements-dev.txt  test and lint tools
+
 # --- Web framework ---
-fastapi==0.115.4
+fastapi==0.162.0
+starlette==1.10.0             # pinned explicitly: older versions have known CVEs
 uvicorn[standard]==0.32.0
-python-multipart==0.0.12
+python-multipart==0.0.32      # file uploads (Form/File)
 pydantic==2.9.2
 pydantic-settings==2.6.0
 
 # --- DB ---
 sqlalchemy==2.0.36
-alembic==1.13.3
-# psycopg[binary]==3.2.3   # uncomment for Postgres
 
 # --- Data ---
 pandas==2.2.3
 numpy==2.1.2
-openpyxl==3.1.5
-pyarrow==17.0.0
+scipy==1.14.1
+openpyxl==3.1.5               # .xlsx uploads
+xlrd==2.0.1                   # .xls uploads
+pyarrow==26.0.0               # .parquet uploads
 
-# --- Plotting (Plotly figure JSON for frontend) ---
+# --- Plotting (Plotly figure JSON for the frontend) ---
 plotly==5.24.1
 
 # --- Classical ML ---
 scikit-learn==1.5.2
 xgboost==2.1.1
-lightgbm==4.5.0
+lightgbm==4.7.0
 joblib==1.4.2
 
-# --- Optional ONNX export ---
-skl2onnx==1.17.0
-onnx==1.17.0
-
-# --- Deep Learning ---
-tensorflow==2.17.0
-# torch==2.4.1   # uncomment if you prefer PyTorch backends
-
-# --- RAG: core stack ---
-langchain==0.3.4
-langchain-community==0.3.3
-langchain-text-splitters==0.3.2
-faiss-cpu==1.9.0
-chromadb==0.5.15
-qdrant-client==1.12.0
-rank-bm25==0.2.2          # sparse / hybrid (BM25) retriever
-tiktoken==0.8.0           # token counting for chunking + budgeting
-
-# --- RAG: heavier / optional (uncomment as needed) ---
-# llama-index==0.11.20          # alt loaders / node parsers
-# unstructured==0.16.0          # universal document parser
-# docling==2.5.1                # layout-aware parsing
-# ragas==0.2.3                  # RAGAS-style evaluation metrics
-# rerankers==0.5.3              # unified reranker interface (cross-encoder/cohere/colbert)
-# langfuse==2.53.0              # tracing / observability
-
-# --- LLM / Embeddings ---
+# --- LLM providers (Ollama is plain HTTP; OpenAI is optional at runtime) ---
 httpx==0.27.2
-ollama==0.3.3
 openai==1.52.0
-anthropic==0.39.0
-cohere==5.11.0            # hosted embeddings + Rerank
-sentence-transformers==3.2.1
 
-# --- Loaders ---
-pypdf==5.0.1
-pymupdf==1.24.13          # fast PDF text extraction
-python-docx==1.1.2
-beautifulsoup4==4.12.3
-trafilatura==1.12.2       # clean web-page main-content extraction
-youtube-transcript-api==0.6.2
-
-# --- Code generation ---
-jinja2==3.1.4
-
-# --- Utilities ---
-python-dotenv==1.0.1
-rich==13.9.2
+# --- Code generation + logging ---
+jinja2==3.1.6
 loguru==0.7.2

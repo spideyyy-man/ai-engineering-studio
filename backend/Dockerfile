@@ -7,11 +7,14 @@ ENV PYTHONUNBUFFERED=1 \
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      build-essential curl libpq-dev \
+      build-essential curl \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# INSTALL_DL=true adds TensorFlow for in-app Deep Learning training.
+ARG INSTALL_DL=false
+COPY requirements.txt requirements-dl.txt ./
+RUN pip install -r requirements.txt \
+    && if [ "$INSTALL_DL" = "true" ]; then pip install -r requirements-dl.txt; fi
 
 COPY . .
 

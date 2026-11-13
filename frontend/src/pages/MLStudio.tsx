@@ -3,7 +3,6 @@ import {
   BrainCircuit,
   Play,
   Download,
-  Database as DBIcon,
   Sliders,
   BarChart3,
   Code,

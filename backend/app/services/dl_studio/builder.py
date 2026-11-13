@@ -47,7 +47,6 @@ def _fig_to_json(fig: go.Figure) -> dict[str, Any]:
 
 def build_keras_model(spec: dict[str, Any]):
     """Construct & compile a tf.keras model from a ModelSpec. TF required."""
-    import tensorflow as tf
     from tensorflow import keras
     from tensorflow.keras import layers as L
 
@@ -210,7 +209,6 @@ def train_tabular(
 
     model = build_keras_model(spec)
 
-    import tensorflow as tf
     from tensorflow import keras
 
     train_cfg = spec.get("training", {})
