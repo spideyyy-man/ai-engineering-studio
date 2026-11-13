@@ -8,8 +8,9 @@ from fastapi import APIRouter, BackgroundTasks, Depends, File, Form, Query, Uplo
 from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 
+from ..config import get_settings
 from ..core.errors import NotFoundError, ValidationError
-from ..core.paths import codegen_path, dataset_path
+from ..core.paths import codegen_path, dataset_path, safe_filename
 from ..database import get_db
 from ..models import Dataset, DatasetTransform, Project
 from ..schemas import (
@@ -78,13 +79,21 @@ def upload_dataset(
     if not file.filename:
         raise ValidationError("file has no name")
 
-    filename = file.filename
+    # Never trust the client's filename: strip any directory part and odd
+    # characters, then pick a name that doesn't overwrite an existing dataset.
+    filename = safe_filename(file.filename, default="dataset")
     ext = Path(filename).suffix.lower()
     if ext not in {".csv", ".tsv", ".xlsx", ".xls", ".parquet", ".json"}:
         raise ValidationError(f"unsupported file type {ext}")
 
     dest = dataset_path(project_id, filename)
-    size = save_upload(file.file, dest)
+    stem, counter = Path(filename).stem, 1
+    while dest.exists():
+        dest = dataset_path(project_id, f"{stem}_{counter}{ext}")
+        counter += 1
+
+    max_bytes = get_settings().max_upload_mb * 1024 * 1024
+    size = save_upload(file.file, dest, max_bytes=max_bytes)
 
     # Profile immediately so the UI can show metadata
     df = load_dataframe(dest)

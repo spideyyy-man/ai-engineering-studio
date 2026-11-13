@@ -12,14 +12,27 @@ from ...core.errors import ValidationError
 SUPPORTED_EXT = {".csv", ".tsv", ".xlsx", ".xls", ".parquet", ".json"}
 
 
-def save_upload(stream: BinaryIO, dest: Path) -> int:
-    """Stream upload to disk; returns bytes written."""
+def save_upload(stream: BinaryIO, dest: Path, *, max_bytes: int | None = None) -> int:
+    """Stream upload to disk; returns bytes written.
+
+    If ``max_bytes`` is set and the upload goes over it, the partial file is
+    deleted and a ValidationError is raised.
+    """
     dest.parent.mkdir(parents=True, exist_ok=True)
     total = 0
+    too_big = False
     with dest.open("wb") as f:
         while chunk := stream.read(1024 * 1024):
-            f.write(chunk)
             total += len(chunk)
+            if max_bytes is not None and total > max_bytes:
+                too_big = True
+                break
+            f.write(chunk)
+    if too_big:
+        dest.unlink(missing_ok=True)
+        raise ValidationError(
+            f"file is larger than the {max_bytes // (1024 * 1024)} MB upload limit (MAX_UPLOAD_MB)"
+        )
     return total
 
 

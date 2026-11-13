@@ -19,13 +19,16 @@ returned to the UI — the choice stays visible, the engine stays honest.
 """
 from __future__ import annotations
 
+import ipaddress
 import json
 import math
 import re
+import socket
 import time
 from collections import Counter
 from pathlib import Path
 from typing import Any
+from urllib.parse import urljoin
 
 import httpx
 import joblib
@@ -53,26 +56,99 @@ def _strip_html(html: str) -> str:
     return re.sub(r"[ \t]{2,}", " ", text).strip()
 
 
+# Local files the RAG loader may read: text-like types only, and only inside
+# backend/storage or a folder listed in RAG_ALLOWED_DIRS.
+_TEXT_FILE_EXT = {".txt", ".md", ".markdown", ".rst", ".html", ".htm", ".csv", ".tsv"}
+_CSV_FILE_EXT = {".csv", ".tsv"}
+_MAX_REDIRECTS = 5
+
+
+def _allowed_dirs() -> list[Path]:
+    s = get_settings()
+    return [Path(d).expanduser().resolve() for d in [s.storage_root, *s.rag_allowed_dirs_list]]
+
+
+def _resolve_local_file(location: str, allowed_ext: set[str]) -> Path:
+    """Resolve a user-typed path and refuse anything outside the allowed folders."""
+    raw = (location or "").strip().strip('"')
+    if not raw:
+        raise ValueError("no file path given")
+    p = Path(raw).expanduser()
+    if not p.is_absolute():
+        p = get_settings().storage_root / p
+    p = p.resolve()
+    if p.suffix.lower() not in allowed_ext:
+        raise ValueError(f"'{p.name}' is not a supported text file ({', '.join(sorted(allowed_ext))})")
+    if not any(p.is_relative_to(d) for d in _allowed_dirs()):
+        raise ValueError(
+            f"'{raw}' is outside the folders RAG Studio may read. Put the file in backend/storage, "
+            "or add its folder to RAG_ALLOWED_DIRS in .env and restart the backend."
+        )
+    if not p.is_file():
+        raise ValueError(f"file not found: {raw}")
+    return p
+
+
+def _check_public_url(url: str) -> None:
+    """Allow only http(s) URLs whose host resolves to public IP addresses.
+
+    Stops the URL loader from being used to reach localhost, the LAN or cloud
+    metadata endpoints. Set RAG_ALLOW_PRIVATE_URLS=true to turn this off.
+    """
+    parsed = httpx.URL(url)
+    if parsed.scheme not in ("http", "https"):
+        raise ValueError("only http:// and https:// URLs are supported")
+    if not parsed.host:
+        raise ValueError("URL has no host")
+    if get_settings().rag_allow_private_urls:
+        return
+    port = parsed.port or (443 if parsed.scheme == "https" else 80)
+    try:
+        infos = socket.getaddrinfo(parsed.host, port, proto=socket.IPPROTO_TCP)
+    except socket.gaierror as e:
+        raise ValueError(f"could not resolve host '{parsed.host}'") from e
+    for info in infos:
+        ip = ipaddress.ip_address(str(info[4][0]).split("%")[0])
+        if ip.version == 6 and ip.ipv4_mapped:
+            ip = ip.ipv4_mapped
+        if not ip.is_global:
+            raise ValueError(
+                f"'{parsed.host}' points to a private or local address; "
+                "set RAG_ALLOW_PRIVATE_URLS=true in .env to allow this"
+            )
+
+
+def _fetch_url(url: str) -> httpx.Response:
+    """GET a URL, re-checking the host on every redirect hop."""
+    for _ in range(_MAX_REDIRECTS + 1):
+        _check_public_url(url)
+        r = httpx.get(url, timeout=20, follow_redirects=False,
+                      headers={"User-Agent": "ai-studio-rag/1.0"})
+        if r.is_redirect:
+            url = urljoin(str(r.url), r.headers["location"])
+            continue
+        r.raise_for_status()
+        return r
+    raise ValueError(f"too many redirects (more than {_MAX_REDIRECTS})")
+
+
 def load_source(kind: str, location: str) -> str:
     kind = (kind or "").lower()
     if kind in ("text", "raw", "paste"):
         return location or ""
     if kind == "url":
         try:
-            r = httpx.get(location, timeout=20, follow_redirects=True,
-                          headers={"User-Agent": "ai-studio-rag/1.0"})
-            r.raise_for_status()
+            r = _fetch_url(location.strip())
         except Exception as e:  # noqa: BLE001
             raise ValueError(f"could not fetch URL '{location}': {e}")
         return _strip_html(r.text)
     if kind in ("txt", "md", "file"):
-        p = Path(location)
-        if not p.exists():
-            raise ValueError(f"file not found: {location}")
+        p = _resolve_local_file(location, _TEXT_FILE_EXT)
         return p.read_text(encoding="utf-8", errors="ignore")
     if kind == "csv":
         import pandas as pd
-        df = pd.read_csv(location)
+        p = _resolve_local_file(location, _CSV_FILE_EXT)
+        df = pd.read_csv(p, sep="\t" if p.suffix.lower() == ".tsv" else ",")
         return "\n".join(" · ".join(f"{c}: {v}" for c, v in row.items()) for _, row in df.iterrows())
     if kind in ("pdf", "docx", "pptx"):
         raise ValueError(f"'{kind}' parsing needs a parser library not installed here — use text / url / txt / csv.")

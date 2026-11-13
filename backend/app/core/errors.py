@@ -45,7 +45,15 @@ def register_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(Exception)
     async def _unhandled(request: Request, exc: Exception):
         logger.exception("unhandled error on {}: {}", request.url.path, exc)
+        from ..config import get_settings  # local import: config must not depend on core
+
+        # The raw exception text can include file paths and internals, so only
+        # send it to the browser in development. The full trace is always logged.
+        if get_settings().app_env == "development":
+            message = str(exc)
+        else:
+            message = "Unexpected server error. Check the backend logs for details."
         return JSONResponse(
             status_code=500,
-            content={"error": "internal_server_error", "message": str(exc)},
+            content={"error": "internal_server_error", "message": message},
         )

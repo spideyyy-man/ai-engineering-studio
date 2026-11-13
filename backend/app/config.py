@@ -1,6 +1,7 @@
 """Application settings — loaded from environment / .env."""
 from __future__ import annotations
 
+import re
 from functools import lru_cache
 from pathlib import Path
 from typing import List
@@ -75,6 +76,13 @@ class Settings(BaseSettings):
     rag_compress_target_tokens: int = 2000
     rag_eval_metrics: str = "faithfulness,context_precision,answer_relevance"
 
+    # RAG source safety
+    # Extra folders the RAG file/csv loaders may read, besides backend/storage.
+    # Separate several with "," or ";", e.g. "C:/Users/me/Documents/notes".
+    rag_allowed_dirs: str = ""
+    # Let the URL loader fetch localhost / LAN / private addresses (off by default).
+    rag_allow_private_urls: bool = False
+
     # Limits
     max_upload_mb: int = 200
     max_training_minutes: int = 30
@@ -94,6 +102,10 @@ class Settings(BaseSettings):
     @property
     def rag_eval_metrics_list(self) -> List[str]:
         return [m.strip() for m in self.rag_eval_metrics.split(",") if m.strip()]
+
+    @property
+    def rag_allowed_dirs_list(self) -> List[str]:
+        return [d.strip() for d in re.split(r"[,;]", self.rag_allowed_dirs) if d.strip()]
 
     def ensure_dirs(self) -> None:
         for p in (

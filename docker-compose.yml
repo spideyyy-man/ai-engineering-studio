@@ -1,9 +1,11 @@
+# All ports are bound to 127.0.0.1: the app has no login, so it must not be
+# reachable from other machines on your network. Change this only behind auth.
 services:
   backend:
     build: ./backend
     container_name: aies-backend
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     env_file:
       - .env
     volumes:
@@ -17,7 +19,7 @@ services:
     build: ./frontend
     container_name: aies-frontend
     ports:
-      - "5180:5180"
+      - "127.0.0.1:5180:5180"
     environment:
       - VITE_API_URL=http://localhost:8000
     depends_on:
@@ -33,7 +35,7 @@ services:
       POSTGRES_PASSWORD: aies
       POSTGRES_DB: aies
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
@@ -44,7 +46,7 @@ services:
     image: ollama/ollama:latest
     container_name: aies-ollama
     ports:
-      - "11434:11434"
+      - "127.0.0.1:11434:11434"
     volumes:
       - ollama_data:/root/.ollama
     networks:

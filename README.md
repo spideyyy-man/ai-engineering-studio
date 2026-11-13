@@ -1,53 +1,59 @@
 # AI Engineering Studio
 
-A production-grade, transparent, developer-friendly web platform for building **Machine Learning**, **Deep Learning**, **RAG**, and **AI Agent** systems through guided workflows — with **code generation** at every step.
+A local, developer-friendly web app for prototyping **machine learning**, **deep learning** and **RAG** systems through guided screens, with **readable, exportable Python code at every step**.
 
-> **Status:** scaffold + Tab 1 (Data Engineering & EDA Studio) fully implemented. Tabs 2–6 are stubbed with working contracts.
+Most AutoML tools hide what they do. This one shows you the data issues it found, *why* it recommends a preprocessing step, the model and metrics it produced, and the code to reproduce all of it, so you learn while you build and you own the result.
 
----
+**Who it's for:** ML and AI engineers who want a quick baseline or prototype, and students or small teams learning how real pipelines fit together.
 
-## Why this exists
-
-Most AutoML tools hide everything. This one shows you the code, the model, the metrics, and *why* it picked a given preprocessing step — so you learn while you ship.
-
-Target users: **developers, students, startups, and solution-based companies** who want to go from a CSV to a deployable model (or a corpus to a working RAG) without losing visibility into what's happening.
+> **Status: early alpha.** Data, ML, DL and RAG work end to end. Agents and Deployment are placeholders. Expect rough edges, and please report them.
 
 ---
 
-## Tabs
+## What works today
 
-| # | Studio | What it does |
+| Studio | Status | What you can do |
 |---|---|---|
-| 1 | **Data Engineering & EDA** | Upload, profile, detect quality issues, get preprocessing recommendations, export code |
-| 2 | **Machine Learning** | Auto-detect problem type, train classical models, tune hyperparams, export pickle/ONNX |
-| 3 | **Deep Learning** | ANN / CNN / LSTM / GRU / Transformer with training controls and export |
-| 4 | **RAG Engineering** | Ingest → chunk → embed → index → retrieve → evaluate, with Ollama-first defaults |
-| 5 | **AI Agents** | ReAct, tool-calling, multi-agent — with prompt templates and monitoring |
-| 6 | **Deployment & MLOps** | FastAPI/Docker/Streamlit generation, experiment tracking, drift detection |
-| 7 | **Projects Hub** | Project list, artifacts browser |
-| 8 | **Settings** | LLM providers, paths, theme |
+| **Data Engineering & EDA** | ✅ Working | Upload CSV / TSV / Excel / Parquet / JSON. Profile columns, detect quality issues, get preprocessing recommendations, apply fixes with history and undo, detect the task type, compute a baseline, and export a scikit-learn preprocessing script. |
+| **Machine Learning** | ✅ Working | Train classification, regression and clustering models (scikit-learn, XGBoost, LightGBM) with automatic preprocessing, cross-validation and grid-based tuning. Download the pickled pipeline and a usage script. |
+| **Deep Learning** | 🟡 Partial | Pick a preset (ANN, Wide & Deep, CNN, ResNet50 transfer, LSTM, GRU, Transformer, time-series LSTM), edit layers, check shapes, and export runnable Keras code. In-app training works for **tabular** data only and needs TensorFlow installed. |
+| **RAG Engineering** | 🟡 Partial | Ingest pasted text, web pages, or local `.txt` / `.md` / `.csv` files. Choose fixed, recursive, sentence or semantic chunking, then retrieve with dense (TF-IDF), sparse (BM25), hybrid (RRF) or MMR. Optional query rewriting, LLM reranking and answer generation through Ollama or OpenAI. FAISS, Chroma, Qdrant and PDF/DOCX parsing are **not wired up yet**. |
+| **AI Agents** | ⏳ Planned | Shows the planned agent types and tools only. The API returns "not implemented". |
+| **Deployment & MLOps** | ⏳ Planned | Shows the planned deployment targets only. The API returns "not implemented". |
+| **Projects Hub** | ✅ Working | Create, rename and delete projects. Every dataset, model and index belongs to a project. |
+| **Settings** | ✅ Working | Read-only view of the configured providers, plus an LLM connectivity check. |
+
+See [docs/ROADMAP.md](docs/ROADMAP.md) for what's planned next.
 
 ---
 
 ## Tech stack
 
-**Frontend:** React 18 + Vite + TypeScript + TailwindCSS + Plotly.js + Zustand + React Router + axios
+- **Frontend:** React 18, Vite, TypeScript (strict), Tailwind CSS, Zustand, Plotly.js, axios
+- **Backend:** FastAPI, SQLAlchemy 2, Pydantic 2, pandas, scikit-learn, XGBoost, LightGBM, TensorFlow/Keras (optional at runtime), Jinja2 for code generation
+- **LLMs and embeddings:** Ollama by default (`llama3`, `nomic-embed-text`), OpenAI optional
+- **Database:** SQLite, created automatically in `backend/storage/`
+- **Storage:** local files under `backend/storage/projects/<project-id>/`
 
-**Backend:** FastAPI + SQLAlchemy + scikit-learn + TensorFlow/Keras + pandas + NumPy
+Architecture details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · API: [docs/API.md](docs/API.md) · Database: [docs/DB_SCHEMA.md](docs/DB_SCHEMA.md)
 
-**Vector / RAG:** FAISS (default), Chroma, Qdrant (pluggable)
-
-**LLM / Embeddings:** Ollama (default — `llama3`, `nomic-embed-text`); OpenAI optional
-
-**DB:** SQLite (dev), PostgreSQL (prod)
-
-**Storage:** local filesystem; S3-compatible interface for later
+> Some of those docs describe the *target* design (for example the FAISS/Chroma/Qdrant adapters and an Anthropic provider). Where they disagree with the table above, the table is the current truth.
 
 ---
 
 ## Quick start
 
-### 1. Backend
+Requirements: Python 3.11, Node.js 20+, and optionally [Ollama](https://ollama.com) for the LLM features.
+
+### 1. Configure
+
+```bash
+cp .env.example .env
+```
+
+The defaults work for local use. Fill in `OPENAI_API_KEY` only if you want OpenAI.
+
+### 2. Backend
 
 ```bash
 cd backend
@@ -58,9 +64,11 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 ```
 
-Backend at <http://localhost:8000>, OpenAPI docs at <http://localhost:8000/docs>.
+The API runs at <http://localhost:8000>, with interactive docs at <http://localhost:8000/docs>.
 
-### 2. Frontend
+> `requirements.txt` is currently large (it includes TensorFlow and several RAG libraries that aren't used yet), so the first install can take a while. Slimming it down is on the list.
+
+### 3. Frontend
 
 ```bash
 cd frontend
@@ -68,9 +76,9 @@ npm install
 npm run dev
 ```
 
-UI at <http://localhost:5180>.
+The UI runs at <http://localhost:5180>.
 
-### 3. (Optional) Ollama for RAG / Agents
+### 4. (Optional) Ollama for RAG answers
 
 ```bash
 ollama serve
@@ -78,21 +86,63 @@ ollama pull llama3
 ollama pull nomic-embed-text
 ```
 
+### Docker
+
+```bash
+docker compose up --build
+```
+
+Add `--profile ollama` to also start an Ollama container.
+
+---
+
+## Security notes
+
+This is a **local, single-user tool**. It has **no login**, so:
+
+- Keep it on your own machine. `docker-compose.yml` binds every port to `127.0.0.1` for that reason, and `uvicorn` binds to localhost by default. Don't expose it to a network or the internet.
+- The RAG file loader only reads text files inside `backend/storage/`. To let it read another folder, add it to `RAG_ALLOWED_DIRS` in `.env`.
+- The RAG URL loader refuses localhost and private-network addresses unless you set `RAG_ALLOW_PRIVATE_URLS=true`.
+- Uploads are capped by `MAX_UPLOAD_MB` (default 200 MB).
+- Models are saved with pickle. Only load model files that this app created.
+
 ---
 
 ## Repository layout
 
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full breakdown, including:
+```
+backend/
+  app/
+    routers/      HTTP endpoints, one file per studio (thin)
+    services/     the real logic: data_engineering, ml_studio, dl_studio, rag_studio, llm, codegen
+    models/       SQLAlchemy tables
+    schemas/      Pydantic request/response models
+    core/         errors, logging, storage paths
+  storage/        created at runtime (datasets, models, indexes, SQLite DB)
+frontend/
+  src/
+    pages/        one page per studio
+    components/   shared UI
+    api/          typed API client, one module per router
+    store/        Zustand stores
+docs/             architecture, API, DB schema, roadmap
+```
 
-- folder structure
-- database schema
-- API surface
-- data flow diagrams
-- development roadmap
-- production deployment strategy
+---
+
+## Contributing
+
+Contributions are welcome. Good places to start:
+
+- Wire up a real vector store (FAISS or Chroma) in `services/rag_studio/`
+- Add PDF/DOCX loading to RAG Studio
+- Build the first Deployment generator: a FastAPI `/predict` service for a trained ML model
+- Add tests (there are none yet) and a CI workflow
+
+Open an issue first for anything large, so we can agree on the approach.
 
 ---
 
 ## License
 
-TBD.
+[MIT](LICENSE) © 2026 spideyyy-man and AI Engineering Studio contributors
