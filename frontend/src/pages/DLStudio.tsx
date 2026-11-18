@@ -114,9 +114,9 @@ export default function DLStudio() {
           <Info size={16} className="mt-0.5 shrink-0" />
           <span>
             TensorFlow isn't installed in the backend, so designing, shape-validation and code
-            export are fully live — but in-studio training is disabled. Run{" "}
-            <code className="rounded bg-black/30 px-1">pip install tensorflow</code> in the backend to
-            enable one-click training.
+            export are fully live — but in-studio training is disabled. Install the optional deep-learning
+            dependencies with <code className="rounded bg-black/30 px-1">pip install -r requirements-dl.txt</code> (Python 3.11–3.12),
+            or set <code className="rounded bg-black/30 px-1">INSTALL_DL: "true"</code> in docker-compose.yml.
           </span>
         </div>
       )}

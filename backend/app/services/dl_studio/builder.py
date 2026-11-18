@@ -2,9 +2,10 @@
 
 Everything in this module is *gated* on TensorFlow being importable. The rest of
 the studio (scaffold / validate / codegen) works without it; only live in-studio
-training needs `pip install tensorflow`. When TF is missing, `tf_available()`
-returns False and the router returns a clean, actionable message instead of a
-crash.
+training needs TensorFlow. Install the optional deep-learning dependencies with
+`pip install -r requirements-dl.txt` (Python 3.11–3.12), or set `INSTALL_DL: "true"`
+in docker-compose.yml. When TF is missing, `tf_available()` returns False and
+the router returns a clean, actionable message instead of a crash.
 
 In-studio training is wired for TABULAR data (classification & regression),
 reusing the same auto-preprocessing philosophy as ML Studio. Image/text/time-
